@@ -74,7 +74,6 @@ const projects = document.createElement("div");
 projects.innerHTML =
     `<span>
     <button class="material-symbols-outlined" id="newProjectBtn">add</button>
-    <input type="text" id="project-name">
     </span>
     <div id="projects-container">
     </div>`;
@@ -100,10 +99,10 @@ Tabs[0].SetActive();
 // Listen to DOM change
 /* Prepare Ui classes */
 const TODO_UI = new TodoUi(DB.data[0].todos[0]);
-TODO_UI.CreateUiHome(home);
+TODO_UI.CreateInputUi(home);
 
 const PROJECT_UI = new ProjectUi(DB.data[0]);
-//PROJECT_UI.CreateUiProject(projects);
+PROJECT_UI.CreateInputUi(projects);
 
 const newTodoBtn = document.getElementById("newTodoBtn");
 const setDateBtn = document.getElementById("setDateBtn");
@@ -116,35 +115,3 @@ saveTodoBtn.addEventListener('click', (e) => {
     TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
     DB.update();
 });
-
-// PROJECTS
-function UiAddProject(proj) {
-    const projUi = new ProjectUi(proj);
-    PROJECTS_UI.push(projUi);
-    projectsContainer.appendChild(projUi.GetView());
-}
-const newProjectBtn = document.getElementById("newProjectBtn");
-
-newProjectBtn.addEventListener('click', (e) => {
-    DB.AddProject(DB.project);
-    UiAddProject(DB.project);
-    DB.project = new Project(DB.project.name, []);
-    updateTodoUI();
-});
-
-// Update from DB
-const projectName = document.getElementById("project-name");
-function updateProjectUI() {
-    projectName.value = DB.data[0].name;
-}
-updateProjectUI();
-// Listen to DOM change
-projectName.addEventListener("input", (e) => {
-    DB.data.project.name = e.target.value;
-});
-
-let PROJECTS_UI = [];
-const projectsContainer = document.getElementById("projects-container");
-for (let i = 0; i < DB.data.length; i++) {
-    UiAddProject(DB.data[i]);
-}
