@@ -56,11 +56,11 @@ class Tab {
 const home = document.createElement("div");
 home.innerHTML =
     `<span>
-        <button>new</button>
-        <button>date</button>
-        <button>prio</button>
-        <button>projects</button>
-        <button>save</button>
+        <button class="material-symbols-outlined">add</button>
+        <button class="material-symbols-outlined">edit_calendar</button>
+        <button class="material-symbols-outlined">priority_high</button>
+        <button class="material-symbols-outlined">dashboard</button>
+        <button class="material-symbols-outlined">save</button>
     </span>
     <div class="flex-container">
         <input type="text" id="todo-title">
