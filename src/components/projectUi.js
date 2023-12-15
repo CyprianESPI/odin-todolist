@@ -29,15 +29,17 @@ class ProjectUi {
 
     GetView() {
         this.container.innerHTML =
-            `<h2>${this._project._name}</h2>
+            `<h2>${this.project.name}</h2>
             <div id="todos-container">
             </div>
             `;
-        console.log(this._project._todos);
-        this._project._todos.forEach(todo => {
-            const todoUi = new TodoUi(todo);
-            this.container.appendChild(todoUi.GetView());
-        });
+        console.log(this.project.todos);
+        if (!this.project.todos) {
+            this.project.todos.forEach(todo => {
+                const todoUi = new TodoUi(todo);
+                this.container.appendChild(todoUi.GetView());
+            });
+        }
         return this.container;
     }
 }

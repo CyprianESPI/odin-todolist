@@ -3,26 +3,29 @@ import Todo from './components/todo.js';
 import Project from "./components/project.js";
 import TodoUi from "./components/todoUi.js";
 import ProjectUi from "./components/projectUi.js";
+import Db from "./components/db.js";
 
-/* Prepare objects */
+/* Load DB */
+let DB = null;
 
-const myTodo = new Todo("title", "content", "dd", 1);
-console.log(myTodo);
+DB = new Db([new Project("Default", [new Todo("def title", "def content", "", 0)])],
+    new Todo("title", "content", "", 0),
+    new Project("NewProject", []));
+DB.update();
+try {
+    const json = localStorage.getItem(Db.KEY);
+    console.log("json:", json);
+    if (!json)
+        DB = JSON.parse();
+}
+catch {
 
-const myProject = new Project("myproj", [myTodo]);
-console.log(myProject);
-
-// DB
-let PROJECTS = [new Project("Default", []), myProject];
-// Current PROJECT
-let PROJECT = new Project("MyProj", []);
-// Current TODO
-let TODO = new Todo("hello", "w");
-console.log(PROJECTS);
+    console.log(DB);
+}
+console.log(DB);
 
 /* MAIN */
 const content = document.getElementById("content");
-
 
 /* Tabs */
 class Tab {
@@ -106,18 +109,18 @@ const todoTitle = document.getElementById("todo-title");
 const todoContent = document.getElementById("todo-content");
 // Update from DB
 function updateTodoUI() {
-    todoTitle.value = TODO.title;
-    todoContent.value = TODO.content;
+    todoTitle.value = DB.todo.title;
+    todoContent.value = DB.todo.content;
 }
 
 updateTodoUI();
 
 // Listen to DOM change
 todoTitle.addEventListener("input", (e) => {
-    TODO.title = e.target.value;
+    DB.todo.title = e.target.value;
 });
 todoContent.addEventListener("input", (e) => {
-    TODO.content = e.target.value;
+    DB.todo.content = e.target.value;
 });
 
 const newTodoBtn = document.getElementById("newTodoBtn");
@@ -127,14 +130,14 @@ const setProjBtn = document.getElementById("setProjBtn");
 const saveTodoBtn = document.getElementById("saveTodoBtn");
 
 newTodoBtn.addEventListener('click', (e) => {
-    TODO.reset();
+    DB.todo.reset();
     updateTodoUI();
 });
 
 saveTodoBtn.addEventListener('click', (e) => {
-    PROJECTS[0].AddTodo(TODO);
+    DB.projects[0].AddTodo(DB.todo);
     PROJECTS_UI[0].UpdateView();
-    TODO = new Todo(TODO.title, TODO.content);
+    DB.todo = new Todo(DB.todo.title, DB.todo.content);
     updateTodoUI();
 });
 
@@ -147,25 +150,25 @@ function UiAddProject(proj) {
 const newProjectBtn = document.getElementById("newProjectBtn");
 
 newProjectBtn.addEventListener('click', (e) => {
-    PROJECTS.push(PROJECT);
-    UiAddProject(PROJECT);
-    PROJECT = new Project(PROJECT.name, []);
+    DB.AddProject(DB.project);
+    UiAddProject(DB.project);
+    DB.project = new Project(DB.project.name, []);
     updateTodoUI();
 });
 
 // Update from DB
 const projectName = document.getElementById("project-name");
 function updateProjectUI() {
-    projectName.value = PROJECT.name;
+    projectName.value = DB.project.name;
 }
 updateProjectUI();
 // Listen to DOM change
 projectName.addEventListener("input", (e) => {
-    PROJECT.name = e.target.value;
+    DB.project.name = e.target.value;
 });
 
 let PROJECTS_UI = [];
 const projectsContainer = document.getElementById("projects-container");
-for (let i = 0; i < PROJECTS.length; i++) {
-    UiAddProject(PROJECTS[i]);
+for (let i = 0; i < DB.projects.length; i++) {
+    UiAddProject(DB.projects[i]);
 }
