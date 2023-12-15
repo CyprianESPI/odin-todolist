@@ -138,10 +138,16 @@ saveTodoBtn.addEventListener('click', (e) => {
 });
 
 // PROJECTS
-const newProjectBtn = document.getElementById("newTodoBtn");
+function UiAddProject(proj) {
+    const projUi = new ProjectUi(proj);
+    PROJECTS_UI.push(projUi);
+    projectsContainer.appendChild(projUi.GetView());
+}
+const newProjectBtn = document.getElementById("newProjectBtn");
 
 newProjectBtn.addEventListener('click', (e) => {
     PROJECTS.push(PROJECT);
+    UiAddProject(PROJECT);
     PROJECT = new Project(PROJECT.name, []);
     updateTodoUI();
 });
@@ -160,7 +166,5 @@ projectName.addEventListener("input", (e) => {
 let PROJECTS_UI = [];
 const projectsContainer = document.getElementById("projects-container");
 for (let i = 0; i < PROJECTS.length; i++) {
-    const projUi = new ProjectUi(PROJECTS[i])
-    PROJECTS_UI.push(projUi);
-    projectsContainer.appendChild(projUi.GetView());
+    UiAddProject(PROJECTS[i]);
 }

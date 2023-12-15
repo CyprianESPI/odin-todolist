@@ -2,9 +2,12 @@ import Project from './project.js';
 import TodoUi from './todoUi.js';
 
 class ProjectUi {
+    static GUID = 0;
     constructor(project) {
         this._project = project;
         this.container = document.createElement("div");
+        ProjectUi.GUID++;
+        this.id = `project-ui-${ProjectUi.GUID}`;
     }
 
     // Other methods or properties specific to Todo class
