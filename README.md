@@ -26,6 +26,7 @@ classDiagram
     Todo : +Bool done
 
     class Project
+    Project: +String name
     Project: +Todo[] todos
     Project: +Note[] notes
     Project: +Enum sortOrder
