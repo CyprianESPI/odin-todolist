@@ -67,12 +67,7 @@ home.innerHTML =
         <button class="material-symbols-outlined" id="setPrioBtn">priority_high</button>
         <button class="material-symbols-outlined" id="setProjBtn">dashboard</button>
         <button class="material-symbols-outlined" id="saveTodoBtn">save</button>
-    </span>
-    <div>
-        <input type="text" id="todo-title">
-        <textarea id="todo-content">
-        </textarea>
-    </div>`;
+    </span>`;
 
 /* Projects */
 const projects = document.createElement("div");
@@ -102,36 +97,16 @@ Tabs.forEach((tab) => {
 content.appendChild(tabs);
 Tabs[0].SetActive();
 
-/* Link DOM objects to DB */
-// HOME
-const todoTitle = document.getElementById("todo-title");
-const todoContent = document.getElementById("todo-content");
-// Update from DB
-function updateTodoUI() {
-    todoTitle.value = DB.data[0].todos[0].title;
-    todoContent.value = DB.data[0].todos[0].content;
-}
-
-updateTodoUI();
-
 // Listen to DOM change
-todoTitle.addEventListener("input", (e) => {
-    DB.todo.title = e.target.value;
-});
-todoContent.addEventListener("input", (e) => {
-    DB.todo.content = e.target.value;
-});
+/* Prepare Ui classes */
+const TODO_UI = new TodoUi(DB.data[0].todos[0]);
+TODO_UI.CreateUiHome(home);
 
 const newTodoBtn = document.getElementById("newTodoBtn");
 const setDateBtn = document.getElementById("setDateBtn");
 const setPrioBtn = document.getElementById("setPrioBtn");
 const setProjBtn = document.getElementById("setProjBtn");
 const saveTodoBtn = document.getElementById("saveTodoBtn");
-
-newTodoBtn.addEventListener('click', (e) => {
-    DB.todo.reset();
-    updateTodoUI();
-});
 
 saveTodoBtn.addEventListener('click', (e) => {
     DB.projects[0].AddTodo(DB.todo);
