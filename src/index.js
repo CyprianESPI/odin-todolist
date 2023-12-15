@@ -89,13 +89,12 @@ deadlines.innerHTML =
 const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
 const tabs = document.createElement("div");
 tabs.className = "tabContainer";
-const main = document.createElement("main");
+const main = document.querySelector("main");
 Tabs.forEach((tab) => {
     tabs.appendChild(tab.CreateTabButton());
     main.appendChild(tab.content);
 });
 content.appendChild(tabs);
-content.appendChild(main);
 Tabs[0].SetActive();
 
 /* Link DOM objects to DB */
