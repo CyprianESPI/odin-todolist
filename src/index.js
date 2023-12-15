@@ -10,8 +10,8 @@ console.log(myTodo);
 const myProject = new Project("myproj", myTodo);
 console.log(myProject);
 
-// DB of projects
-let PROJECTS = [myProject];
+// DB
+let PROJECTS = [new Project("Default", []), myProject];
 // Current TODO
 let TODO = new Todo("hello", "w");
 console.log(PROJECTS);
@@ -125,6 +125,12 @@ const saveTodoBtn = document.getElementById("saveTodoBtn");
 
 newTodoBtn.addEventListener('click', (e) => {
     TODO.reset();
+    updateTodoUI();
+});
+
+saveTodoBtn.addEventListener('click', (e) => {
+    PROJECTS[0].AddTodo(TODO);
+    TODO = new Todo(TODO._title, TODO._content);
     updateTodoUI();
 });
 
