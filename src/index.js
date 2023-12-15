@@ -102,6 +102,9 @@ Tabs[0].SetActive();
 const TODO_UI = new TodoUi(DB.data[0].todos[0]);
 TODO_UI.CreateUiHome(home);
 
+const PROJECT_UI = new ProjectUi(DB.data[0]);
+//PROJECT_UI.CreateUiProject(projects);
+
 const newTodoBtn = document.getElementById("newTodoBtn");
 const setDateBtn = document.getElementById("setDateBtn");
 const setPrioBtn = document.getElementById("setPrioBtn");
@@ -109,10 +112,9 @@ const setProjBtn = document.getElementById("setProjBtn");
 const saveTodoBtn = document.getElementById("saveTodoBtn");
 
 saveTodoBtn.addEventListener('click', (e) => {
-    DB.projects[0].AddTodo(DB.todo);
-    PROJECTS_UI[0].UpdateView();
-    DB.todo = new Todo(DB.todo.title, DB.todo.content);
-    updateTodoUI();
+    DB.data[1].todos.push(TODO_UI.todo);
+    TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
+    DB.update();
 });
 
 // PROJECTS
