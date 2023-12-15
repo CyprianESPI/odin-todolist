@@ -94,11 +94,18 @@ content.appendChild(main);
 Tabs[0].SetActive();
 
 /* Link DOM objects to DB */
+// TODO
 const todoTitle = document.getElementById("todo-title");
 const todoContent = document.getElementById("todo-content");
+// Update from DB
+todoTitle.value = TODO._title;
+todoContent.value = TODO._content;
+// Listen to DOM change
 todoTitle.addEventListener("input", (e) => {
     TODO.title = e.target.value;
 });
 todoContent.addEventListener("input", (e) => {
     TODO.content = e.target.value;
 });
+
+// PROJECTS
