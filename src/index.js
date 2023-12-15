@@ -20,10 +20,13 @@ const content = document.getElementById("content");
 
 /* Tabs */
 class Tab {
+    static active = "tabActive";
+    static inactive = "tabInactive";
+
     constructor(name, content) {
         this.name = name;
         this.content = content;
-        this.content.className += "tabInactive";
+        this.content.className += Tab.active;
     }
 
     CreateTabButton() {
@@ -40,36 +43,39 @@ class Tab {
 
     SetActive() {
         Tabs.forEach((tab) => {
-            tab.content.className = tab.content.className.replace("tabActive", "tabInactive");
+            tab.content.className = tab.content.className.replace(Tab.active, Tab.inactive);
         });
-        this.content.className = this.content.className.replace("tabInactive", "tabActive");
-        console.log(Tabs);
+        this.content.className = this.content.className.replace(Tab.inactive, Tab.active);
+        console.debug(Tabs);
     }
 }
 
 /* Home */
 const home = document.createElement("div");
-home.innerHTML = `
-  <div>
-    <span>Home</span>
-  </div>
-`;
+home.innerHTML =
+    `<span>Home</span>
+    <div>
+        <input>
+        <input>
+    </div>`;
 
 /* Projects */
 const projects = document.createElement("div");
-projects.innerHTML = `
-  <div>
-    <span>Proj</span>
-  </div>
-`;
+projects.innerHTML =
+    `<span>Projects</span>
+    <div>
+        <input>
+        <input>
+    </div>`;
 
 /* Deadlines */
 const deadlines = document.createElement("div");
-deadlines.innerHTML = `
-  <div>
-    <span>deadlines</span>
-  </div>
-`;
+deadlines.innerHTML =
+    `<span>Deadlines</span>
+    <div>
+        <input>
+        <input>
+    </div>`;
 
 const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
 const tabs = document.createElement("div");
