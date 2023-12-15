@@ -98,9 +98,7 @@ const todoTitle = document.getElementById("todo-title");
 const todoContent = document.getElementById("todo-content");
 todoTitle.addEventListener("input", (e) => {
     TODO.title = e.target.value;
-    console.log(TODO);
 });
 todoContent.addEventListener("input", (e) => {
     TODO.content = e.target.value;
-    console.log(TODO);
 });
