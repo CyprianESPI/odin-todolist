@@ -21,7 +21,8 @@ class TodoUi {
 
     GetView() {
         this.container.innerHTML =
-            `<h3>${this._title}</h3>
+            `<h3>${this._todo.title}</h3>
+            <p>${this._todo.content}</p>
             `;
         return this.container;
     }

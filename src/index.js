@@ -133,6 +133,7 @@ newTodoBtn.addEventListener('click', (e) => {
 
 saveTodoBtn.addEventListener('click', (e) => {
     PROJECTS[0].AddTodo(TODO);
+    PROJECTS_UI[0].UpdateView();
     TODO = new Todo(TODO.title, TODO.content);
     updateTodoUI();
 });

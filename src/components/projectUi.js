@@ -23,6 +23,10 @@ class ProjectUi {
         this.logInfo();
     }
 
+    UpdateView() {
+        this.container = this.GetView();
+    }
+
     GetView() {
         this.container.innerHTML =
             `<h2>${this._project._name}</h2>
