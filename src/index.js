@@ -58,8 +58,8 @@ home.innerHTML =
     `<span>Home</span>
     <div>
         <span>Save | DueDate | Prio | New </span>
-        <input type="text" id="note-title">
-        <textarea id="note-content">
+        <input type="text" id="todo-title">
+        <textarea id="todo-content">
         </textarea>
     </div>`;
 
@@ -94,9 +94,13 @@ content.appendChild(main);
 Tabs[0].SetActive();
 
 /* Link DOM objects to DB */
-const noteTitle = document.getElementById("note-title");
-const noteContent = document.getElementById("note-content");
-noteTitle.addEventListener("input", (e) => {
-    TODO.title = e.innerText;
-    console.log("oninput", TODO);
-})
+const todoTitle = document.getElementById("todo-title");
+const todoContent = document.getElementById("todo-content");
+todoTitle.addEventListener("input", (e) => {
+    TODO.title = e.target.value;
+    console.log(TODO);
+});
+todoContent.addEventListener("input", (e) => {
+    TODO.content = e.target.value;
+    console.log(TODO);
+});
