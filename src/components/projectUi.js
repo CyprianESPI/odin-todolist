@@ -1,8 +1,10 @@
 import Project from './project.js';
+import TodoUi from './todoUi.js';
 
 class ProjectUi {
     constructor(project) {
         this._project = project;
+        this.container = document.createElement("div");
     }
 
     // Other methods or properties specific to Todo class
@@ -19,11 +21,17 @@ class ProjectUi {
     }
 
     GetView() {
-        const d = document.createElement("div");
-        d.innerHTML =
+        this.container.innerHTML =
             `<h2>${this._project._name}</h2>
+            <div id="todos-container">
+            </div>
             `;
-        return d;
+        console.log(this._project._todos);
+        this._project._todos.forEach(todo => {
+            const todoUi = new TodoUi(todo);
+            this.container.appendChild(todoUi.GetView());
+        });
+        return this.container;
     }
 }
 

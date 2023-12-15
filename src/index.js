@@ -9,7 +9,7 @@ import ProjectUi from "./components/projectUi.js";
 const myTodo = new Todo("title", "content", "dd", 1);
 console.log(myTodo);
 
-const myProject = new Project("myproj", myTodo);
+const myProject = new Project("myproj", [myTodo]);
 console.log(myProject);
 
 // DB
