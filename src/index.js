@@ -56,11 +56,11 @@ class Tab {
 const home = document.createElement("div");
 home.innerHTML =
     `<span>
-        <button class="material-symbols-outlined">add</button>
-        <button class="material-symbols-outlined">edit_calendar</button>
-        <button class="material-symbols-outlined">priority_high</button>
-        <button class="material-symbols-outlined">dashboard</button>
-        <button class="material-symbols-outlined">save</button>
+        <button class="material-symbols-outlined" id="newTodoBtn">add</button>
+        <button class="material-symbols-outlined" id="setDateBtn">edit_calendar</button>
+        <button class="material-symbols-outlined" id="setPrioBtn">priority_high</button>
+        <button class="material-symbols-outlined" id="setProjBtn">dashboard</button>
+        <button class="material-symbols-outlined" id="saveTodoBtn">save</button>
     </span>
     <div class="flex-container">
         <input type="text" id="todo-title">
@@ -98,18 +98,34 @@ content.appendChild(tabs);
 Tabs[0].SetActive();
 
 /* Link DOM objects to DB */
-// TODO
+// HOME
 const todoTitle = document.getElementById("todo-title");
 const todoContent = document.getElementById("todo-content");
 // Update from DB
-todoTitle.value = TODO._title;
-todoContent.value = TODO._content;
+function updateTodoUI() {
+    todoTitle.value = TODO._title;
+    todoContent.value = TODO._content;
+}
+
+updateTodoUI();
+
 // Listen to DOM change
 todoTitle.addEventListener("input", (e) => {
     TODO.title = e.target.value;
 });
 todoContent.addEventListener("input", (e) => {
     TODO.content = e.target.value;
+});
+
+const newTodoBtn = document.getElementById("newTodoBtn");
+const setDateBtn = document.getElementById("setDateBtn");
+const setPrioBtn = document.getElementById("setPrioBtn");
+const setProjBtn = document.getElementById("setProjBtn");
+const saveTodoBtn = document.getElementById("saveTodoBtn");
+
+newTodoBtn.addEventListener('click', (e) => {
+    TODO.reset();
+    updateTodoUI();
 });
 
 // PROJECTS
