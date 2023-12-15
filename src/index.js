@@ -64,7 +64,7 @@ home.innerHTML =
         <button class="material-symbols-outlined" id="setProjBtn">dashboard</button>
         <button class="material-symbols-outlined" id="saveTodoBtn">save</button>
     </span>
-    <div class="flex-container">
+    <div>
         <input type="text" id="todo-title">
         <textarea id="todo-content">
         </textarea>
@@ -77,16 +77,14 @@ projects.innerHTML =
     <button class="material-symbols-outlined" id="newProjectBtn">add</button>
     <input type="text" id="project-name">
     </span>
-    <div class="flex-container">
+    <div id="projects-container">
     </div>`;
 
 /* Deadlines */
 const deadlines = document.createElement("div");
 deadlines.innerHTML =
     `<span>Deadlines</span>
-    <div>
-        <input>
-        <input>
+    <div id="deadlines-container">
     </div>`;
 
 const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
