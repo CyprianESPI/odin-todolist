@@ -1,6 +1,8 @@
 import Styles from "./styles.css";
 import Todo from './components/todo.js';
 import Project from "./components/project.js";
+import TodoUi from "./components/todoUi.js";
+import ProjectUi from "./components/projectUi.js";
 
 /* Prepare objects */
 
@@ -154,3 +156,11 @@ updateProjectUI();
 projectName.addEventListener("input", (e) => {
     PROJECT.name = e.target.value;
 });
+
+let PROJECTS_UI = [];
+const projectsContainer = document.getElementById("projects-container");
+for (let i = 0; i < PROJECTS.length; i++) {
+    const projUi = new ProjectUi(PROJECTS[i])
+    PROJECTS_UI.push(projUi);
+    projectsContainer.appendChild(projUi.GetView());
+}
