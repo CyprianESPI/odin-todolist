@@ -55,9 +55,14 @@ class Tab {
 /* Home */
 const home = document.createElement("div");
 home.innerHTML =
-    `<span>Home</span>
-    <div>
-        <span>Save | DueDate | Prio | New </span>
+    `<span>
+        <button>new</button>
+        <button>date</button>
+        <button>prio</button>
+        <button>projects</button>
+        <button>save</button>
+    </span>
+    <div class="flex-container">
         <input type="text" id="todo-title">
         <textarea id="todo-content">
         </textarea>
