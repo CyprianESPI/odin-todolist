@@ -11,3 +11,7 @@ body {
     display: block;
     text-align: center;
 }
+
+.tabInactive {
+    display: none;
+}
