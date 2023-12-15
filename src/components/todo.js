@@ -14,20 +14,24 @@ class Todo {
     }
 
     // Other methods or properties specific to Todo class
+    logInfo() {
+        console.log(this);
+    }
+
     get title() {
         return this._title;
     }
     set title(newVal) {
-        console.log(this);
         this._title = newVal;
+        this.logInfo();
     }
 
     get content() {
         return this._title;
     }
     set content(newVal) {
-        console.log(this);
         this._content = newVal;
+        this.logInfo();
     }
 }
 
