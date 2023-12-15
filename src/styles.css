@@ -38,3 +38,8 @@ body {
     border-radius: var(--br);
     padding: 5px;
 }
+
+.header,
+.footer {
+    margin: 20px;
+}
