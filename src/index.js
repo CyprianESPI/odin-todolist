@@ -74,8 +74,8 @@ home.innerHTML =
 const projects = document.createElement("div");
 projects.innerHTML =
     `<span>
-    <input type="text" id="project-name">
     <button class="material-symbols-outlined" id="newProjectBtn">add</button>
+    <input type="text" id="project-name">
     </span>
     <div class="flex-container">
     </div>`;

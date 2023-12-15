@@ -28,7 +28,8 @@ body {
 }
 
 #todo-title,
-#todo-content {
+#todo-content,
+#project-name {
     justify-content: center;
     margin-top: 20px;
     width: 95%;
