@@ -12,6 +12,8 @@ console.log(myProject);
 
 // DB
 let PROJECTS = [new Project("Default", []), myProject];
+// Current PROJECT
+let PROJECT = new Project("MyProj", []);
 // Current TODO
 let TODO = new Todo("hello", "w");
 console.log(PROJECTS);
@@ -71,10 +73,11 @@ home.innerHTML =
 /* Projects */
 const projects = document.createElement("div");
 projects.innerHTML =
-    `<span>Projects</span>
-    <div>
-        <input>
-        <input>
+    `<span>
+    <input type="text" id="project-name">
+    <button class="material-symbols-outlined" id="newProjectBtn">add</button>
+    </span>
+    <div class="flex-container">
     </div>`;
 
 /* Deadlines */
@@ -103,8 +106,8 @@ const todoTitle = document.getElementById("todo-title");
 const todoContent = document.getElementById("todo-content");
 // Update from DB
 function updateTodoUI() {
-    todoTitle.value = TODO._title;
-    todoContent.value = TODO._content;
+    todoTitle.value = TODO.title;
+    todoContent.value = TODO.content;
 }
 
 updateTodoUI();
@@ -130,8 +133,26 @@ newTodoBtn.addEventListener('click', (e) => {
 
 saveTodoBtn.addEventListener('click', (e) => {
     PROJECTS[0].AddTodo(TODO);
-    TODO = new Todo(TODO._title, TODO._content);
+    TODO = new Todo(TODO.title, TODO.content);
     updateTodoUI();
 });
 
 // PROJECTS
+const newProjectBtn = document.getElementById("newTodoBtn");
+
+newProjectBtn.addEventListener('click', (e) => {
+    PROJECTS.push(PROJECT);
+    PROJECT = new Project(PROJECT.name, []);
+    updateTodoUI();
+});
+
+// Update from DB
+const projectName = document.getElementById("project-name");
+function updateProjectUI() {
+    projectName.value = PROJECT.name;
+}
+updateProjectUI();
+// Listen to DOM change
+projectName.addEventListener("input", (e) => {
+    PROJECT.name = e.target.value;
+});
