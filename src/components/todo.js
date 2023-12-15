@@ -1,9 +1,7 @@
-// components/todo.js
-import Note from './note.js'; // Ensure correct path based on your file structure
-
-class Todo extends Note {
+class Todo {
     constructor(title, content, dueDate, priority) {
-        super(title, content); // Call the constructor of the parent class
+        this.title = title;
+        this.content = content;
         this.dueDate = dueDate;
         this.priority = priority;
     }

@@ -1,18 +1,20 @@
 import Styles from "./styles.css";
-import Note from './components/note.js';
 import Todo from './components/todo.js';
 import Project from "./components/project.js";
 
 /* Prepare objects */
-const myNote = new Note('Title', 'Content');
-console.log(myNote);
 
 const myTodo = new Todo("title", "content", "dd", 1);
 console.log(myTodo);
 
-const myProject = new Project("myproj", myNote, myTodo);
+const myProject = new Project("myproj", myTodo);
 console.log(myProject);
 
+// DB of projects
+let PROJECTS = [myProject];
+// Current TODO
+let TODO = new Todo("hello", "w");
+console.log(PROJECTS);
 
 /* MAIN */
 const content = document.getElementById("content");
@@ -55,8 +57,10 @@ const home = document.createElement("div");
 home.innerHTML =
     `<span>Home</span>
     <div>
-        <input>
-        <input>
+        <span>Save | DueDate | Prio | New </span>
+        <input type="text" id="note-title">
+        <textarea id="note-content">
+        </textarea>
     </div>`;
 
 /* Projects */
@@ -88,3 +92,11 @@ Tabs.forEach((tab) => {
 content.appendChild(tabs);
 content.appendChild(main);
 Tabs[0].SetActive();
+
+/* Link DOM objects to DB */
+const noteTitle = document.getElementById("note-title");
+const noteContent = document.getElementById("note-content");
+noteTitle.addEventListener("input", (e) => {
+    TODO.title = e.innerText;
+    console.log("oninput", TODO);
+})
