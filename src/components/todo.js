@@ -27,7 +27,7 @@ class Todo {
     }
 
     get content() {
-        return this._title;
+        return this._content;
     }
     set content(newVal) {
         this._content = newVal;
