@@ -7,19 +7,9 @@ import Db from "./components/db.js";
 
 /* Load DB */
 let DB = null;
-DB = new Db(
-    [new Project("NewProject", [new Todo("title", "content", "", 0)]),
-    new Project("Default", [new Todo("def title", "def content", "", 0)])]);
-console.log("DB: ", DB);
-DB.update();
-try {
-    const json = localStorage.getItem(Db.KEY);
-    console.log("try json:", json);
-    if (!json)
-        DB = JSON.parse();
-}
-catch {
-    console.log(DB);
+const json = localStorage.getItem(Db.KEY);
+if (json) {
+    DB = new Db(JSON.parse(json));
 }
 console.log("loaded db:", DB);
 
