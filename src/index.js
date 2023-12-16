@@ -103,12 +103,12 @@ const saveTodoBtn = document.getElementById("saveTodoBtn");
 saveTodoBtn.addEventListener('click', (e) => {
     DB.data[1].todos.push(TODO_UI.todo);
     TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
-    DB.update();
+    DB.save();
 });
 
 const addProjectBtn = document.getElementById("addProjectBtn");
 addProjectBtn.addEventListener("click", (e) => {
     DB.data.push(PROJECT_UI.project);
     PROJECT_UI.project = new Project(PROJECT_UI.project.title, []);
-    DB.update();
+    DB.save();
 });
