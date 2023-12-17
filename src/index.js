@@ -15,9 +15,9 @@ console.log("loaded db:", DB);
 
 // These keys are important
 DB = new Db({
-    "Notes": new Project("Notes", {}),
+    "Notes": new Project("Notes", []),
     "UiTodo": new Todo("Title", "Content...", "", 0),
-    "UiProject": new Project("Title", {}),
+    "UiProject": new Project("Title", []),
     "Projects": {
         "New project": new Project("New project", {})
     }
@@ -113,14 +113,19 @@ const setProjBtn = document.getElementById("setProjBtn");
 const saveTodoBtn = document.getElementById("saveTodoBtn");
 
 saveTodoBtn.addEventListener('click', (e) => {
-    DB.data[1].todos.push(TODO_UI.todo);
+    console.log(DB);
+    console.log(DB.data["Notes"]);
+
+    console.log(DB.data["Notes"]["todos"]);
+    DB.data["Notes"]["todos"].push({ key: TODO_UI.todo.title, value: TODO_UI.todo });
     TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
     DB.save();
 });
 
 const addProjectBtn = document.getElementById("addProjectBtn");
 addProjectBtn.addEventListener("click", (e) => {
-    DB.data.push(PROJECT_UI.project);
+    console.log(DB);
+    DB.data["Projects"].push(PROJECT_UI.project.title, PROJECT_UI.project);
     PROJECT_UI.project = new Project(PROJECT_UI.project.title, []);
     DB.save();
 });
