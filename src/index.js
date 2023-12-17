@@ -113,18 +113,14 @@ const setProjBtn = document.getElementById("setProjBtn");
 const saveTodoBtn = document.getElementById("saveTodoBtn");
 
 saveTodoBtn.addEventListener('click', (e) => {
-
-    console.log(DB.data["Notes"]["todos"]);
     DB.data["Notes"].todos[TODO_UI.todo.title] = TODO_UI.todo;
     TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
     DB.save();
-    console.log(DB.data["Notes"]["todos"]);
 });
 
 const addProjectBtn = document.getElementById("addProjectBtn");
 addProjectBtn.addEventListener("click", (e) => {
-    console.log(DB);
     DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
-    PROJECT_UI.project = new Project(PROJECT_UI.project.title, []);
+    PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
     DB.save();
 });
