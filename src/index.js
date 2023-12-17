@@ -13,6 +13,17 @@ if (json) {
 }
 console.log("loaded db:", DB);
 
+DB = new Db({
+    "Notes": new Project("Notes", {}),
+    "UiTodo": new Todo("Title", "Content...", "", 0),
+    "UiProject": new Project("Title", {}),
+    "Projects": {
+        "New project": new Project("New project", {})
+    }
+});
+console.log("DB: ", DB);
+DB.save();
+
 /* MAIN */
 const content = document.getElementById("content");
 
