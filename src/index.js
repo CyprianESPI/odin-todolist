@@ -13,6 +13,7 @@ if (json) {
 }
 console.log("loaded db:", DB);
 
+// These keys are important
 DB = new Db({
     "Notes": new Project("Notes", {}),
     "UiTodo": new Todo("Title", "Content...", "", 0),
@@ -99,10 +100,10 @@ Tabs[0].SetActive();
 
 // Listen to DOM change
 /* Prepare Ui classes */
-const TODO_UI = new TodoUi(DB.data[0].todos[0]);
+const TODO_UI = new TodoUi(DB.data["UiTodo"]);
 TODO_UI.CreateInputUi(home);
 
-const PROJECT_UI = new ProjectUi(DB.data[0]);
+const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
 PROJECT_UI.CreateInputUi(projects);
 
 const newTodoBtn = document.getElementById("newTodoBtn");
