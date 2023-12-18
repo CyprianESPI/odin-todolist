@@ -70,9 +70,6 @@ function createTabs() {
 }
 
 function bindDataToDOM() {
-    const TODO_UI = new TodoUi(DB.data["UiTodo"]);
-    TODO_UI.CreateUiTemplate(home, DB);
-
     const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
     PROJECT_UI.CreateInputUi(projects);
 
@@ -81,11 +78,21 @@ function bindDataToDOM() {
         DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
         PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
         DB.save();
-        updateProjectsUi();
+        refreshUi();
     });
 }
 
-function updateProjectsUi() {
+function refreshUi() {
+    refreshUiHome();
+    refreshUiProjects();
+}
+
+function refreshUiHome() {
+    const todoUi = new TodoUi(DB.data["UiTodo"]);
+    todoUi.CreateUiTemplate(home, DB);
+}
+
+function refreshUiProjects() {
     const projectsContainer = document.getElementById("projects-container");
     Utils.removeContent(projectsContainer);
     // Display special Notes
@@ -108,7 +115,7 @@ function main() {
     loadDb();
     createTabs();
     bindDataToDOM();
-    updateProjectsUi();
+    refreshUi();
 }
 
 // ======================== //
