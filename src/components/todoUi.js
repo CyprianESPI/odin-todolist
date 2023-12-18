@@ -18,6 +18,7 @@ class TodoUi {
 
         // Header
         const header = document.createElement("div");
+        header.className = "addHeader";
 
         if (homePage) {
             const addBtn = document.createElement("button");

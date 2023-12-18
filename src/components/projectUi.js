@@ -26,6 +26,7 @@ class ProjectUi {
             this.project.title = e.target.value;
         });
         parent.appendChild(inputTitle);
+        parent.className = "addHeader";
     }
 
     CreateUiDisplay(parent, db, refreshUi) {

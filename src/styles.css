@@ -23,6 +23,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid red;
+    padding: 2px;
 }
 
 /*
@@ -56,6 +58,10 @@ main {
     padding-top: 20px;
 }
 
+button {
+    border-radius: 50%;
+}
+
 .tabButton {
     border-radius: var(--br);
     width: 75px;
@@ -74,7 +80,12 @@ main {
     padding-bottom: 15px;
 }
 
-
 .footer {
     margin-top: 20px;
+}
+
+.addHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
