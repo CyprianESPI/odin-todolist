@@ -90,14 +90,14 @@ function updateProjectsUi() {
     Utils.removeContent(projectsContainer);
     // Display special Notes
     const projectUi = new ProjectUi(DB.data["Notes"]);
-    projectUi.CreateUiDisplay(projectsContainer);
+    projectUi.CreateUiDisplay(projectsContainer, DB);
     // Display regular Projects
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
         console.log("The key: ", k);
         console.log("The value: ", v);
 
         const projectUi = new ProjectUi(v);
-        projectUi.CreateUiDisplay(projectsContainer);
+        projectUi.CreateUiDisplay(projectsContainer, DB);
     });
 }
 

@@ -23,7 +23,7 @@ class ProjectUi {
         });
     }
 
-    CreateUiDisplay(parent) {
+    CreateUiDisplay(parent, db) {
         this.uiDisplay.innerHTML =
             `<h2>${this.project.title}</h2>
             `;
@@ -37,7 +37,7 @@ class ProjectUi {
             console.log("The value: ", v);
 
             const todoUi = new TodoUi(v);
-            todoUi.CreateUiHome(todoContainer);
+            todoUi.CreateUiTemplate(todoContainer, db);
         });
 
         console.log("parent:", parent);
