@@ -20,10 +20,10 @@ class TodoUi {
 
         console.log("parent:", parent);
 
-        document.getElementById("todo-title").addEventListener("click", (e) => {
+        document.getElementById("todo-title").addEventListener("input", (e) => {
             this.todo.title = e.target.value;
         });
-        document.getElementById("todo-content").addEventListener("click", (e) => {
+        document.getElementById("todo-content").addEventListener("input", (e) => {
             this.todo.content = e.target.value;
         });
     }

@@ -100,15 +100,27 @@ function bindDataToDOM() {
         DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
         PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
         DB.save();
+        updateProjectsUi();
     });
+}
 
+function updateProjectsUi() {
+    const projectsContainer = document.getElementById("projects-container");
+    removeContent(projectsContainer);
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
         console.log("The key: ", k);
         console.log("The value: ", v);
 
         const projectUi = new ProjectUi(v);
-        projectUi.CreateUiDisplay(projects);
+        projectUi.CreateUiDisplay(projectsContainer);
     });
+}
+
+function removeContent(elem) {
+    // Remove previous content
+    while (elem.firstChild) {
+        elem.firstChild.remove()
+    }
 }
 
 
@@ -116,6 +128,7 @@ function main() {
     loadDb();
     createTabs();
     bindDataToDOM();
+    updateProjectsUi();
 }
 
 // ======================== //

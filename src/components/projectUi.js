@@ -4,6 +4,7 @@ import TodoUi from './todoUi.js';
 class ProjectUi {
     constructor(project) {
         this.project = project;
+        this.uiDisplay = document.createElement("div");
     }
 
     // Other methods or properties specific to Todo class
@@ -17,20 +18,19 @@ class ProjectUi {
 
         console.log("parent:", parent);
 
-        document.getElementById("project-title").addEventListener("click", (e) => {
+        document.getElementById("project-title").addEventListener("input", (e) => {
             this.project.title = e.target.value;
         });
     }
 
     CreateUiDisplay(parent) {
-        const container = document.createElement("div");
-        container.innerHTML =
+        this.uiDisplay.innerHTML =
             `<h2>${this.project.title}</h2>
             `;
 
         const todoContainer = document.createElement("div");
-        container.appendChild(todoContainer);
-        parent.appendChild(container);
+        this.uiDisplay.appendChild(todoContainer);
+        parent.appendChild(this.uiDisplay);
 
         Object.entries(this.project.todos).forEach(([k, v]) => {
             console.log("The key: ", k);
