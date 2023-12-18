@@ -54,7 +54,7 @@ class ProjectUi {
             const todoUi = new TodoUi(v);
             const todosContainer = document.createElement("div");
             parent.appendChild(todosContainer);
-            todoUi.CreateUiTemplate(false, todosContainer, db, refreshUi);
+            todoUi.CreateUiTemplate(false, this.project.title, todosContainer, db, refreshUi);
         });
     }
 }

@@ -2,13 +2,15 @@ import Todo from './todo.js';
 import Utils from './utils.js';
 
 class TodoUi {
+    static HOME_PROJECT = "Notes";
+
     constructor(todo) {
         this.todo = todo;
     }
 
     // This function clears any child from its parent
     // 2 options here, in home we display add to add item, and delete to clear content
-    CreateUiTemplate(homePage, parent, db, refreshUi) {
+    CreateUiTemplate(homePage, projectTitle, parent, db, refreshUi) {
         // Clear previous content
         Utils.removeContent(parent);
 
@@ -24,7 +26,6 @@ class TodoUi {
             addBtn.addEventListener('click', (e) => {
                 const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
                 if (inputProject.value == "Notes") {
-
                     db.data["Notes"].todos[this.todo.title] = newTodo;
                 }
                 else {
@@ -74,6 +75,18 @@ class TodoUi {
             opt.innerText = v.title;
             inputProject.appendChild(opt);
         });
+        if (homePage) {
+            inputProject.value = TodoUi.HOME_PROJECT;
+        } else {
+            inputProject.value = projectTitle;
+        }
+        inputProject.addEventListener("input", (e) => {
+            if (homePage) {
+                TodoUi.HOME_PROJECT = e.target.value;
+            } else {
+                //TODO switch project
+            }
+        });
         footer.appendChild(inputProject);
 
         const deleteBtn = document.createElement("button");
@@ -84,7 +97,7 @@ class TodoUi {
                 db.data["UiTodo"].todo = new Todo("", "");
                 this.todo = db.data["UiTodo"].todo;
                 db.save();
-                this.CreateUiTemplate(homePage, parent, db);
+                this.CreateUiTemplate(homePage, null, parent, db);
             } else {
                 if (inputProject.value == "Notes") {
                     delete db.data["Notes"].todos[this.todo.title];
