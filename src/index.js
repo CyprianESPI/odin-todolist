@@ -101,6 +101,14 @@ function bindDataToDOM() {
         PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
         DB.save();
     });
+
+    Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
+        console.log("The key: ", k);
+        console.log("The value: ", v);
+
+        const projectUi = new ProjectUi(v);
+        projectUi.CreateUiDisplay(projects);
+    });
 }
 
 
