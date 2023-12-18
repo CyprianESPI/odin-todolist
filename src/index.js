@@ -4,63 +4,14 @@ import Project from "./components/project.js";
 import TodoUi from "./components/todoUi.js";
 import ProjectUi from "./components/projectUi.js";
 import Db from "./components/db.js";
+import Tab from "./components/tab.js";
 
-/* Load DB */
+// ======================== //
+// Global vars...
+// ======================== //
 let DB = null;
-const json = localStorage.getItem(Db.KEY);
-if (json) {
-    DB = new Db(JSON.parse(json));
-}
-console.log("loaded db:", DB);
-
-// These keys are important
-DB = new Db({
-    "Notes": new Project("Notes", {}),
-    "UiTodo": new Todo("Title", "Content...", "", 0),
-    "UiProject": new Project("Title", {}),
-    "Projects": {
-        "NewProject": new Project("New Project", {}),
-    }
-});
-console.log("DB: ", DB);
-DB.save();
-
-/* MAIN */
 const content = document.getElementById("content");
-
-/* Tabs */
-class Tab {
-    static active = "tabActive";
-    static inactive = "tabInactive";
-
-    constructor(name, content) {
-        this.name = name;
-        this.content = content;
-        this.content.className += Tab.active;
-    }
-
-    CreateTabButton() {
-        const elem = document.createElement("button");
-        elem.className = "tabButton";
-        elem.innerText = this.name;
-
-        elem.addEventListener("click", () => {
-            this.SetActive();
-        });
-
-        return elem;
-    }
-
-    SetActive() {
-        Tabs.forEach((tab) => {
-            tab.content.className = tab.content.className.replace(Tab.active, Tab.inactive);
-        });
-        this.content.className = this.content.className.replace(Tab.inactive, Tab.active);
-        console.debug(Tabs);
-    }
-}
-
-/* Home */
+// Home tab
 const home = document.createElement("div");
 home.innerHTML =
     `<span>
@@ -71,7 +22,7 @@ home.innerHTML =
         <button class="material-symbols-outlined" id="saveTodoBtn">save</button>
     </span>`;
 
-/* Projects */
+// Projects tab
 const projects = document.createElement("div");
 projects.innerHTML =
     `<span>
@@ -80,47 +31,86 @@ projects.innerHTML =
     <div id="projects-container">
     </div>`;
 
-/* Deadlines */
+// Deadlines tab
 const deadlines = document.createElement("div");
 deadlines.innerHTML =
     `<span>Deadlines</span>
     <div id="deadlines-container">
     </div>`;
 
-const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
-const tabs = document.createElement("div");
-tabs.className = "tabContainer";
-const main = document.querySelector("main");
-Tabs.forEach((tab) => {
-    tabs.appendChild(tab.CreateTabButton());
-    main.appendChild(tab.content);
-});
-content.appendChild(tabs);
-Tabs[0].SetActive();
 
-// Listen to DOM change
-/* Prepare Ui classes */
-const TODO_UI = new TodoUi(DB.data["UiTodo"]);
-TODO_UI.CreateInputUi(home);
+// ======================== //
+// Functions...
+// ======================== //
+function loadDb() {
+    const json = localStorage.getItem(Db.KEY);
+    if (json) {
+        DB = new Db(JSON.parse(json));
+    }
+    console.log("loaded db:", DB);
 
-const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
-PROJECT_UI.CreateInputUi(projects);
-
-const newTodoBtn = document.getElementById("newTodoBtn");
-const setDateBtn = document.getElementById("setDateBtn");
-const setPrioBtn = document.getElementById("setPrioBtn");
-const setProjBtn = document.getElementById("setProjBtn");
-const saveTodoBtn = document.getElementById("saveTodoBtn");
-
-saveTodoBtn.addEventListener('click', (e) => {
-    DB.data["Notes"].todos[TODO_UI.todo.title] = TODO_UI.todo;
-    TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
+    // These keys are important
+    DB = new Db({
+        "Notes": new Project("Notes", {}),
+        "UiTodo": new Todo("Title", "Content...", "", 0),
+        "UiProject": new Project("Title", {}),
+        "Projects": {
+            "NewProject": new Project("New Project", {}),
+        }
+    });
+    console.log("DB: ", DB);
     DB.save();
-});
+}
 
-const addProjectBtn = document.getElementById("addProjectBtn");
-addProjectBtn.addEventListener("click", (e) => {
-    DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
-    PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
-    DB.save();
-});
+function createTabs() {
+    const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
+    Tab.TABS = Tabs;
+    const tabs = document.createElement("div");
+    tabs.className = "tabContainer";
+    const main = document.querySelector("main");
+    Tabs.forEach((tab) => {
+        tabs.appendChild(tab.CreateTabButton());
+        main.appendChild(tab.content);
+    });
+    content.appendChild(tabs);
+    Tabs[0].SetActive();
+}
+
+function bindDatatoDOM() {
+    const TODO_UI = new TodoUi(DB.data["UiTodo"]);
+    TODO_UI.CreateInputUi(home);
+
+    const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
+    PROJECT_UI.CreateInputUi(projects);
+
+    const newTodoBtn = document.getElementById("newTodoBtn");
+    const setDateBtn = document.getElementById("setDateBtn");
+    const setPrioBtn = document.getElementById("setPrioBtn");
+    const setProjBtn = document.getElementById("setProjBtn");
+    const saveTodoBtn = document.getElementById("saveTodoBtn");
+
+    saveTodoBtn.addEventListener('click', (e) => {
+        DB.data["Notes"].todos[TODO_UI.todo.title] = TODO_UI.todo;
+        TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
+        DB.save();
+    });
+
+    const addProjectBtn = document.getElementById("addProjectBtn");
+    addProjectBtn.addEventListener("click", (e) => {
+        DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
+        PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
+        DB.save();
+    });
+}
+
+
+function main() {
+    loadDb();
+    createTabs();
+    bindDatatoDOM();
+}
+
+// ======================== //
+// Main
+// ======================== //
+main();
