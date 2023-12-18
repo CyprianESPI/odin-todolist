@@ -81,7 +81,7 @@ function refreshUi() {
 
 function refreshUiHome() {
     const todoUi = new TodoUi(DB.data["UiTodo"]);
-    todoUi.CreateUiTemplate(home, DB, refreshUi);
+    todoUi.CreateUiTemplate(true, home, DB, refreshUi);
 }
 
 function refreshUiProjects() {

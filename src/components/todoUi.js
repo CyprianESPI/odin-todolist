@@ -4,13 +4,11 @@ import Utils from './utils.js';
 class TodoUi {
     constructor(todo) {
         this.todo = todo;
-        this.uiHome = document.createElement("div");
-        this.uiProject = document.createElement("div");
     }
 
     // This function clears any child from its parent
     // 2 options here, in home we display add to add item, and delete to clear content
-    CreateUiTemplate(parent, db, refreshUi) {
+    CreateUiTemplate(homePage, parent, db, refreshUi) {
         // Clear previous content
         Utils.removeContent(parent);
 
@@ -83,7 +81,7 @@ class TodoUi {
             db.data["UiTodo"].todo = new Todo("", "");
             this.todo = db.data["UiTodo"].todo;
             db.save();
-            this.CreateUiTemplate(parent, db);
+            this.CreateUiTemplate(homePage, parent, db);
         });
         footer.appendChild(deleteBtn);
 
