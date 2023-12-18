@@ -43,7 +43,13 @@ class TodoUi {
         addBtn.className = "material-symbols-outlined";
         addBtn.innerText = "add";
         addBtn.addEventListener('click', (e) => {
-            db.data["Notes"].todos[this.todo.title] = this.todo;
+            if (inputProject.value == "Notes") {
+                db.data["Notes"].todos[this.todo.title] = this.todo;
+            }
+            else {
+                db.data["Projects"][inputProject.value].todos[this.todo.title] = this.todo;
+            }
+
             db.data["UiTodo"].todo = new Todo(this.todo.title, this.todo.content);
             this.todo = db.data["UiTodo"].todo;
             db.save();

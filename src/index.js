@@ -48,7 +48,7 @@ function loadDb() {
         "UiTodo": new Todo("Title", "Content...", "", 0),
         "UiProject": new Project("Title", {}),
         "Projects": {
-            "NewProject": new Project("New Project", {}),
+            "New Project": new Project("New Project", {}),
         }
     });
     console.log("DB: ", DB);
