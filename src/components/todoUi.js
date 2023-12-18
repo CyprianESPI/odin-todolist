@@ -15,6 +15,7 @@ class TodoUi {
         Utils.removeContent(parent);
 
         const container = document.createElement("div");
+        container.className = "todoCard";
 
         // Header
         const header = document.createElement("div");
