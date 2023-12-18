@@ -28,7 +28,7 @@ class ProjectUi {
         parent.appendChild(inputTitle);
     }
 
-    CreateUiDisplay(parent, db) {
+    CreateUiDisplay(parent, db, refreshUi) {
         const header = document.createElement("h2");
         header.innerText = this.project.title;
         parent.appendChild(header);
@@ -38,7 +38,7 @@ class ProjectUi {
             const todoUi = new TodoUi(v);
             const todosContainer = document.createElement("div");
             parent.appendChild(todosContainer);
-            todoUi.CreateUiTemplate(false, todosContainer, db);
+            todoUi.CreateUiTemplate(false, todosContainer, db, refreshUi);
         });
     }
 }

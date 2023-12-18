@@ -17,22 +17,24 @@ class TodoUi {
         // Header
         const header = document.createElement("div");
 
-        const addBtn = document.createElement("button");
-        addBtn.className = "material-symbols-outlined";
-        addBtn.innerText = "add";
-        addBtn.addEventListener('click', (e) => {
-            const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
-            if (inputProject.value == "Notes") {
+        if (homePage) {
+            const addBtn = document.createElement("button");
+            addBtn.className = "material-symbols-outlined";
+            addBtn.innerText = "add";
+            addBtn.addEventListener('click', (e) => {
+                const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
+                if (inputProject.value == "Notes") {
 
-                db.data["Notes"].todos[this.todo.title] = newTodo;
-            }
-            else {
-                db.data["Projects"][inputProject.value].todos[this.todo.title] = newTodo;
-            }
-            db.save();
-            refreshUi();
-        });
-        header.appendChild(addBtn);
+                    db.data["Notes"].todos[this.todo.title] = newTodo;
+                }
+                else {
+                    db.data["Projects"][inputProject.value].todos[this.todo.title] = newTodo;
+                }
+                db.save();
+                refreshUi();
+            });
+            header.appendChild(addBtn);
+        }
 
         const inputTitle = document.createElement("input");
         inputTitle.type = "text";
@@ -78,10 +80,21 @@ class TodoUi {
         deleteBtn.className = "material-symbols-outlined";
         deleteBtn.innerText = "delete";
         deleteBtn.addEventListener('click', (e) => {
-            db.data["UiTodo"].todo = new Todo("", "");
-            this.todo = db.data["UiTodo"].todo;
-            db.save();
-            this.CreateUiTemplate(homePage, parent, db);
+            if (homePage) {
+                db.data["UiTodo"].todo = new Todo("", "");
+                this.todo = db.data["UiTodo"].todo;
+                db.save();
+                this.CreateUiTemplate(homePage, parent, db);
+            } else {
+                if (inputProject.value == "Notes") {
+                    delete db.data["Notes"].todos[this.todo.title];
+                }
+                else {
+                    delete db.data["Projects"][inputProject.value].todos[this.todo.title];
+                }
+                db.save();
+                refreshUi();
+            }
         });
         footer.appendChild(deleteBtn);
 
