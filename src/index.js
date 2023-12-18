@@ -107,6 +107,10 @@ function bindDataToDOM() {
 function updateProjectsUi() {
     const projectsContainer = document.getElementById("projects-container");
     removeContent(projectsContainer);
+    // Display special Notes
+    const projectUi = new ProjectUi(DB.data["Notes"]);
+    projectUi.CreateUiDisplay(projectsContainer);
+    // Display regular Projects
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
         console.log("The key: ", k);
         console.log("The value: ", v);
