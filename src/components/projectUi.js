@@ -30,6 +30,8 @@ class ProjectUi {
     }
 
     CreateUiDisplay(parent, db, refreshUi) {
+        const container = document.createElement("div");
+        container.className = "projectCard";
         const header = document.createElement("div");
         const title = document.createElement("h2");
         title.innerText = this.project.title;
@@ -48,15 +50,17 @@ class ProjectUi {
         }
 
 
-        parent.appendChild(header);
+        container.appendChild(header);
 
         Object.entries(this.project.todos).forEach(([k, v]) => {
             console.log("CreateUiDisplay kvp:", k, v);
             const todoUi = new TodoUi(v);
             const todosContainer = document.createElement("div");
-            parent.appendChild(todosContainer);
+            container.appendChild(todosContainer);
             todoUi.CreateUiTemplate(false, this.project.title, todosContainer, db, refreshUi);
         });
+
+        parent.appendChild(container);
     }
 }
 

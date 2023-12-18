@@ -94,3 +94,10 @@ button {
     border-radius: var(--br);
     padding: 10px;
 }
+
+.projectCard {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 15px;
+    border-radius: var(--br);
+    padding: 10px;
+}
