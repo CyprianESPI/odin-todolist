@@ -67,6 +67,11 @@ main {
     color: white;
 }
 
+.btnActive {
+    background-color: var(--clr-A200);
+    color: black;
+}
+
 .header {
     background-color: var(--clr-primary-100);
 }
