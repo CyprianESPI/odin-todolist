@@ -5,6 +5,7 @@ import TodoUi from "./components/todoUi.js";
 import ProjectUi from "./components/projectUi.js";
 import Db from "./components/db.js";
 import Tab from "./components/tab.js";
+import Utils from "./components/utils.js";
 
 // ======================== //
 // Global vars...
@@ -86,7 +87,7 @@ function bindDataToDOM() {
 
 function updateProjectsUi() {
     const projectsContainer = document.getElementById("projects-container");
-    removeContent(projectsContainer);
+    Utils.removeContent(projectsContainer);
     // Display special Notes
     const projectUi = new ProjectUi(DB.data["Notes"]);
     projectUi.CreateUiDisplay(projectsContainer);
@@ -100,12 +101,7 @@ function updateProjectsUi() {
     });
 }
 
-function removeContent(elem) {
-    // Remove previous content
-    while (elem.firstChild) {
-        elem.firstChild.remove()
-    }
-}
+
 
 
 function main() {

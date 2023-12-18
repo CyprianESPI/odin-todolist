@@ -1,4 +1,5 @@
 import Todo from './todo.js';
+import Utils from './utils.js';
 
 class TodoUi {
     constructor(todo) {
@@ -28,7 +29,11 @@ class TodoUi {
         });
     }
 
+    // 2 options here, in home we display add to add item, and delete to clear content
     CreateUiTemplate(parent, db) {
+        // Clear previous content
+        Utils.removeContent(parent);
+
         const container = document.createElement("div");
 
         // Header
@@ -87,6 +92,12 @@ class TodoUi {
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "material-symbols-outlined";
         deleteBtn.innerText = "delete";
+        deleteBtn.addEventListener('click', (e) => {
+            db.data["UiTodo"].todo = new Todo("", "");
+            this.todo = db.data["UiTodo"].todo;
+            db.save();
+            this.CreateUiTemplate(parent, db);
+        });
         footer.appendChild(deleteBtn);
 
         // Fill the container
