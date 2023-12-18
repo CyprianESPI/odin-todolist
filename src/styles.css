@@ -68,8 +68,8 @@ main {
 }
 
 .btnActive {
-    background-color: var(--clr-A200);
-    color: black;
+    background-color: var(--clr-primary-700);
+    color: var(--clr-A400);
 }
 
 .header {
