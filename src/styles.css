@@ -1,8 +1,21 @@
 :root {
-    --clr-primary-1: #222831;
-    --clr-primary-2: #393E46;
-    --clr-secondary: #00ADB5;
-    --clr-accent: #EEEEEE;
+    /* https://m1.material.io/style/color.html#color-color-palette */
+    --clr-primary-50: #ECEFF1;
+    --clr-primary-100: #CFD8DC;
+    --clr-primary-200: #B0BEC5;
+    --clr-primary-300: #90A4AE;
+    --clr-primary-400: #78909C;
+    --clr-primary-500: #607D8B;
+    --clr-primary-600: #546E7A;
+    --clr-primary-700: #455A64;
+    --clr-primary-800: #37474F;
+    --clr-primary-900: #263238;
+
+    --clr-A100: #FFFF8D;
+    --clr-A200: #FFFF00;
+    --clr-A400: #FFEA00;
+    --clr-A700: #FFD600;
+
     --br: 15px;
 }
 
@@ -46,7 +59,17 @@ main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.header,
-.footer {
-    margin: 20px;
+.tabButton {
+    border-radius: var(--br);
+    width: 75px;
+    height: 2em;
+    background-color: var(--clr-primary-500);
+    color: white;
 }
+
+.header {
+    background-color: var(--clr-primary-100);
+}
+
+
+.footer {}
