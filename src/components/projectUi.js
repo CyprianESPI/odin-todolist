@@ -29,8 +29,24 @@ class ProjectUi {
     }
 
     CreateUiDisplay(parent, db, refreshUi) {
-        const header = document.createElement("h2");
-        header.innerText = this.project.title;
+        const header = document.createElement("div");
+        const title = document.createElement("h2");
+        title.innerText = this.project.title;
+        header.appendChild(title);
+        // Notes must never be deleted
+        if (this.project.title !== "Notes") {
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "material-symbols-outlined";
+            deleteBtn.innerText = "delete";
+            deleteBtn.addEventListener('click', (e) => {
+                delete db.data["Projects"][this.project.title];
+                db.save();
+                refreshUi();
+            });
+            header.appendChild(deleteBtn);
+        }
+
+
         parent.appendChild(header);
 
         Object.entries(this.project.todos).forEach(([k, v]) => {
