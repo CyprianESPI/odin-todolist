@@ -8,7 +8,7 @@ class TodoUi {
     }
 
     // Other methods or properties specific to Todo class
-    CreateInputUi(parent) {
+    CreateUiHome(parent) {
         this.uiHome.innerHTML =
             `<input type="text" id="todo-title" value="${this.todo.title}">
             <textarea id="todo-content">

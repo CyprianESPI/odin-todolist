@@ -76,9 +76,9 @@ function createTabs() {
     Tabs[0].SetActive();
 }
 
-function bindDatatoDOM() {
+function bindDataToDOM() {
     const TODO_UI = new TodoUi(DB.data["UiTodo"]);
-    TODO_UI.CreateInputUi(home);
+    TODO_UI.CreateUiHome(home);
 
     const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
     PROJECT_UI.CreateInputUi(projects);
@@ -107,7 +107,7 @@ function bindDatatoDOM() {
 function main() {
     loadDb();
     createTabs();
-    bindDatatoDOM();
+    bindDataToDOM();
 }
 
 // ======================== //
