@@ -81,10 +81,26 @@ class TodoUi {
             inputProject.value = projectTitle;
         }
         inputProject.addEventListener("input", (e) => {
+            console.log("inputProject:", e.target.value);
             if (homePage) {
                 TodoUi.HOME_PROJECT = e.target.value;
             } else {
-                //TODO switch project
+                // Switch project
+                const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
+                if (e.target.value == "Notes") {
+                    db.data["Notes"].todos[this.todo.title] = newTodo;
+                }
+                else {
+                    db.data["Projects"][e.target.value].todos[this.todo.title] = newTodo;
+                }
+                if (projectTitle == "Notes") {
+                    delete db.data["Notes"].todos[this.todo.title];
+                }
+                else {
+                    delete db.data["Projects"][projectTitle].todos[this.todo.title];
+                }
+                db.save();
+                refreshUi();
             }
         });
         footer.appendChild(inputProject);
