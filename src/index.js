@@ -13,14 +13,6 @@ let DB = null;
 const content = document.getElementById("content");
 // Home tab
 const home = document.createElement("div");
-home.innerHTML =
-    `<span>
-        <button class="material-symbols-outlined" id="newTodoBtn">add</button>
-        <button class="material-symbols-outlined" id="setDateBtn">edit_calendar</button>
-        <button class="material-symbols-outlined" id="setPrioBtn">priority_high</button>
-        <button class="material-symbols-outlined" id="setProjBtn">dashboard</button>
-        <button class="material-symbols-outlined" id="saveTodoBtn">save</button>
-    </span>`;
 
 // Projects tab
 const projects = document.createElement("div");
@@ -78,22 +70,10 @@ function createTabs() {
 
 function bindDataToDOM() {
     const TODO_UI = new TodoUi(DB.data["UiTodo"]);
-    TODO_UI.CreateUiHome(home);
+    TODO_UI.CreateUiTemplate(home, DB);
 
     const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
     PROJECT_UI.CreateInputUi(projects);
-
-    const newTodoBtn = document.getElementById("newTodoBtn");
-    const setDateBtn = document.getElementById("setDateBtn");
-    const setPrioBtn = document.getElementById("setPrioBtn");
-    const setProjBtn = document.getElementById("setProjBtn");
-    const saveTodoBtn = document.getElementById("saveTodoBtn");
-
-    saveTodoBtn.addEventListener('click', (e) => {
-        DB.data["Notes"].todos[TODO_UI.todo.title] = TODO_UI.todo;
-        TODO_UI.todo = new Todo(TODO_UI.todo.title, TODO_UI.todo.content);
-        DB.save();
-    });
 
     const addProjectBtn = document.getElementById("addProjectBtn");
     addProjectBtn.addEventListener("click", (e) => {
