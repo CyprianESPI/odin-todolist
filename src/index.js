@@ -18,9 +18,8 @@ const home = document.createElement("div");
 // Projects tab
 const projects = document.createElement("div");
 projects.innerHTML =
-    `<span>
-    <button class="material-symbols-outlined" id="addProjectBtn">add</button>
-    </span>
+    `<div id="projects-input">
+    </div>
     <div id="projects-container">
     </div>`;
 
@@ -69,17 +68,10 @@ function createTabs() {
     Tabs[0].SetActive();
 }
 
-function bindDataToDOM() {
-    const PROJECT_UI = new ProjectUi(DB.data["UiProject"]);
-    PROJECT_UI.CreateInputUi(projects);
-
-    const addProjectBtn = document.getElementById("addProjectBtn");
-    addProjectBtn.addEventListener("click", (e) => {
-        DB.data["Projects"][PROJECT_UI.project.title] = PROJECT_UI.project;
-        PROJECT_UI.project = new Project(PROJECT_UI.project.title, {});
-        DB.save();
-        refreshUi();
-    });
+function loadUiProjectInput() {
+    const projectsInput = document.getElementById("projects-input");
+    const projectUi = new ProjectUi(DB.data["UiProject"]);
+    projectUi.CreateUiInput(projectsInput, DB, refreshUi);
 }
 
 function refreshUi() {
@@ -114,7 +106,7 @@ function refreshUiProjects() {
 function main() {
     loadDb();
     createTabs();
-    bindDataToDOM();
+    loadUiProjectInput();
     refreshUi();
 }
 

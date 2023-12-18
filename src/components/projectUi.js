@@ -8,19 +8,25 @@ class ProjectUi {
     }
 
     // Other methods or properties specific to Todo class
-    CreateInputUi(parent) {
-        const container = document.createElement("div");
-        container.innerHTML =
-            `<input type="text" id="project-title" value="${this.project.title}">
-            `;
+    CreateUiInput(parent, db, refreshUi) {
+        const addBtn = document.createElement("button");
+        addBtn.className = "material-symbols-outlined";
+        addBtn.innerText = "add";
+        addBtn.addEventListener('click', (e) => {
+            db.data["Projects"][this.project.title] = this.project;
+            this.project = new Project(this.project.title, {});
+            db.save();
+            refreshUi();
+        });
+        parent.appendChild(addBtn);
 
-        parent.appendChild(container);
-
-        console.log("parent:", parent);
-
-        document.getElementById("project-title").addEventListener("input", (e) => {
+        const inputTitle = document.createElement("input");
+        inputTitle.type = "text";
+        inputTitle.value = this.project.title;
+        inputTitle.addEventListener("input", (e) => {
             this.project.title = e.target.value;
         });
+        parent.appendChild(inputTitle);
     }
 
     CreateUiDisplay(parent, db) {
