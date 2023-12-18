@@ -45,6 +45,7 @@ class TodoUi {
         addBtn.addEventListener('click', (e) => {
             db.data["Notes"].todos[this.todo.title] = this.todo;
             db.data["UiTodo"].todo = new Todo(this.todo.title, this.todo.content);
+            this.todo = db.data["UiTodo"].todo;
             db.save();
         });
         header.appendChild(addBtn);
