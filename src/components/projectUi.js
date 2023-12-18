@@ -39,14 +39,9 @@ class ProjectUi {
         parent.appendChild(this.uiDisplay);
 
         Object.entries(this.project.todos).forEach(([k, v]) => {
-            console.log("The key: ", k);
-            console.log("The value: ", v);
-
             const todoUi = new TodoUi(v);
             todoUi.CreateUiTemplate(todoContainer, db);
         });
-
-        console.log("parent:", parent);
     }
 }
 

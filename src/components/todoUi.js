@@ -8,29 +8,8 @@ class TodoUi {
         this.uiProject = document.createElement("div");
     }
 
-    // Other methods or properties specific to Todo class
-    CreateUiHome(parent) {
-        this.uiHome.innerHTML =
-            `<input type="text" id="todo-title" value="${this.todo.title}">
-            <textarea id="todo-content">
-                ${this.todo.content}
-            </textarea>
-            `;
-
-        parent.appendChild(this.uiHome);
-
-        console.log("parent:", parent);
-
-        document.getElementById("todo-title").addEventListener("input", (e) => {
-            this.todo.title = e.target.value;
-        });
-        document.getElementById("todo-content").addEventListener("input", (e) => {
-            this.todo.content = e.target.value;
-        });
-    }
-
     // 2 options here, in home we display add to add item, and delete to clear content
-    CreateUiTemplate(parent, db) {
+    CreateUiTemplate(parent, db, refreshUi) {
         // Clear previous content
         Utils.removeContent(parent);
 
@@ -43,16 +22,16 @@ class TodoUi {
         addBtn.className = "material-symbols-outlined";
         addBtn.innerText = "add";
         addBtn.addEventListener('click', (e) => {
+            const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
             if (inputProject.value == "Notes") {
-                db.data["Notes"].todos[this.todo.title] = this.todo;
+
+                db.data["Notes"].todos[this.todo.title] = newTodo;
             }
             else {
-                db.data["Projects"][inputProject.value].todos[this.todo.title] = this.todo;
+                db.data["Projects"][inputProject.value].todos[this.todo.title] = newTodo;
             }
-
-            db.data["UiTodo"].todo = new Todo(this.todo.title, this.todo.content);
-            this.todo = db.data["UiTodo"].todo;
             db.save();
+            refreshUi();
         });
         header.appendChild(addBtn);
 
@@ -112,16 +91,6 @@ class TodoUi {
         container.appendChild(inputContent);
         container.appendChild(footer);
         parent.appendChild(container);
-
-        console.log("container:", container);
-    }
-
-
-    CreateUiProject() {
-        this.uiProject.innerHTML =
-            `<h3>${this.todo.title}</h3>
-            <p>${this.todo.content}</p>
-            `;
     }
 }
 

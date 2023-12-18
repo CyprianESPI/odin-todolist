@@ -11,7 +11,7 @@ class Db {
     save() {
         const json = JSON.stringify(this.data);
         localStorage.setItem(Db.KEY, json);
-        console.log("save", Db.KEY, json);
+        //console.log("save", Db.KEY, json);
         console.log("full db:", this.data);
     }
 }

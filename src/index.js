@@ -81,7 +81,7 @@ function refreshUi() {
 
 function refreshUiHome() {
     const todoUi = new TodoUi(DB.data["UiTodo"]);
-    todoUi.CreateUiTemplate(home, DB);
+    todoUi.CreateUiTemplate(home, DB, refreshUi);
 }
 
 function refreshUiProjects() {
@@ -92,9 +92,6 @@ function refreshUiProjects() {
     projectUi.CreateUiDisplay(projectsContainer, DB);
     // Display regular Projects
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
-        console.log("The key: ", k);
-        console.log("The value: ", v);
-
         const projectUi = new ProjectUi(v);
         projectUi.CreateUiDisplay(projectsContainer, DB);
     });
