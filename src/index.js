@@ -38,20 +38,21 @@ function loadDb() {
     const json = localStorage.getItem(Db.KEY);
     if (json) {
         DB = new Db(JSON.parse(json));
+        console.log("Loaded db from localStorage:", DB);
     }
-    console.log("loaded db:", DB);
-
-    // These keys are important
-    DB = new Db({
-        "Notes": new Project("Notes", {}),
-        "UiTodo": new Todo("Title", "Content...", "", 0),
-        "UiProject": new Project("Title", {}),
-        "Projects": {
-            "New Project": new Project("New Project", {}),
-        }
-    });
-    console.log("DB: ", DB);
-    DB.save();
+    else {
+        // These keys are important
+        DB = new Db({
+            "Notes": new Project("Notes", {}),
+            "UiTodo": new Todo("Title", "Content...", "", 0),
+            "UiProject": new Project("Title", {}),
+            "Projects": {
+                "New Project": new Project("New Project", {}),
+            }
+        });
+        console.log("Created new db:", DB);
+        DB.save();
+    }
 }
 
 function createTabs() {
