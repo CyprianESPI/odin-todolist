@@ -4,7 +4,6 @@ import TodoUi from './todoUi.js';
 class ProjectUi {
     constructor(project) {
         this.project = project;
-        this.uiDisplay = document.createElement("div");
     }
 
     // Other methods or properties specific to Todo class
@@ -30,17 +29,16 @@ class ProjectUi {
     }
 
     CreateUiDisplay(parent, db) {
-        this.uiDisplay.innerHTML =
-            `<h2>${this.project.title}</h2>
-            `;
-
-        const todoContainer = document.createElement("div");
-        this.uiDisplay.appendChild(todoContainer);
-        parent.appendChild(this.uiDisplay);
+        const header = document.createElement("h2");
+        header.innerText = this.project.title;
+        parent.appendChild(header);
 
         Object.entries(this.project.todos).forEach(([k, v]) => {
+            console.log("CreateUiDisplay kvp:", k, v);
             const todoUi = new TodoUi(v);
-            todoUi.CreateUiTemplate(todoContainer, db);
+            const todosContainer = document.createElement("div");
+            parent.appendChild(todosContainer);
+            todoUi.CreateUiTemplate(todosContainer, db);
         });
     }
 }

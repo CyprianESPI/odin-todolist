@@ -8,6 +8,7 @@ class TodoUi {
         this.uiProject = document.createElement("div");
     }
 
+    // This function clears any child from its parent
     // 2 options here, in home we display add to add item, and delete to clear content
     CreateUiTemplate(parent, db, refreshUi) {
         // Clear previous content
