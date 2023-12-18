@@ -113,7 +113,7 @@ class TodoUi {
                 db.data["UiTodo"].todo = new Todo("", "");
                 this.todo = db.data["UiTodo"].todo;
                 db.save();
-                this.CreateUiTemplate(homePage, null, parent, db);
+                this.CreateUiTemplate(homePage, "", parent, db, refreshUi);
             } else {
                 if (inputProject.value == "Notes") {
                     delete db.data["Notes"].todos[this.todo.title];
