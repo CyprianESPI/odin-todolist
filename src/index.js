@@ -56,7 +56,7 @@ function loadDb() {
 }
 
 function createTabs() {
-    const Tabs = [new Tab("Home", home), new Tab("Projects", projects), new Tab("Deadlines", deadlines)];
+    const Tabs = [new Tab("Home", home), new Tab("Dashboard", projects), new Tab("Schedule", deadlines)];
     Tab.TABS = Tabs;
     const tabs = document.createElement("div");
     tabs.className = "tabContainer";

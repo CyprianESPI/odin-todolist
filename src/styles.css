@@ -37,6 +37,11 @@ body {
     height: 100vh;
 }
 
+.tabContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
 .tabInactive {
     display: none;
 }
@@ -67,9 +72,9 @@ textarea {
 }
 
 .tabButton {
-    border-radius: var(--br);
-    width: 75px;
-    height: 2em;
+    border-radius: 50%;
+    width: 50px;
+    aspect-ratio: 1;
     background-color: var(--clr-primary-500);
     color: white;
 }
@@ -81,7 +86,7 @@ textarea {
 
 .header {
     background-color: var(--clr-primary-100);
-    padding-bottom: 15px;
+    padding: 10px;
 }
 
 .footer {

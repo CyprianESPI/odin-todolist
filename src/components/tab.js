@@ -14,7 +14,7 @@ class Tab {
 
     CreateTabButton() {
         const elem = document.createElement("button");
-        elem.className = "tabButton " + Tab.btnInactive;
+        elem.className = "material-symbols-outlined tabButton " + Tab.btnInactive;
         elem.innerText = this.name;
 
         elem.addEventListener("click", () => {
