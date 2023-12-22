@@ -5,6 +5,8 @@ class Todo {
         this.dueDate = dueDate;
         this.priority = priority;
     }
+
+    static priorities = ["low", "medium", "high"];
 }
 
 export default Todo;

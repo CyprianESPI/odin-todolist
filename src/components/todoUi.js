@@ -95,8 +95,22 @@ class TodoUi {
         inputDate.valueAsDate = new Date();
         footer.appendChild(inputDate);
 
-        const inputPrio = document.createElement("input");
-        inputPrio.type = "checkbox";
+        const inputPrio = document.createElement("select");
+        Todo.priorities.forEach((option) => {
+            const opt = document.createElement("option");
+            opt.value = option;
+            opt.innerText = option;
+            inputPrio.appendChild(opt);
+        });
+        inputPrio.value = this.todo.priority;
+        inputPrio.addEventListener("input", (e) => {
+            console.log("inputPrio:", e.target.value);
+            this.todo.priority = e.target.value;
+            if (!homePage) {
+                db.save();
+                refreshUi();
+            }
+        });
         footer.appendChild(inputPrio);
 
 
