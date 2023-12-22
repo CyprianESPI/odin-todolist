@@ -93,7 +93,7 @@ class TodoUi {
 
         const inputDate = document.createElement("input");
         inputDate.type = "date";
-        inputDate.valueAsDate = new Date();
+        inputDate.valueAsDate = new Date(this.todo.dueDate);
         footer.appendChild(inputDate);
         inputDate.addEventListener("input", (e) => {
             console.log("inputDate:", e.target.value);
