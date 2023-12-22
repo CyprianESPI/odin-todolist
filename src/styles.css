@@ -1,17 +1,19 @@
 :root {
     /* https://m1.material.io/style/color.html#color-color-palette */
-    --clr-primary-50: #ECEFF1;
-    --clr-primary-100: #CFD8DC;
-    --clr-primary-200: #B0BEC5;
-    --clr-primary-300: #90A4AE;
-    --clr-primary-400: #78909C;
-    --clr-primary-500: #607D8B;
-    --clr-primary-600: #546E7A;
-    --clr-primary-700: #455A64;
-    --clr-primary-800: #37474F;
-    --clr-primary-900: #263238;
+    /* Blue */
+    --clr-primary-50: #E3F2FD;
+    --clr-primary-100: #BBDEFB;
+    --clr-primary-200: #90CAF9;
+    --clr-primary-300: #64B5F6;
+    --clr-primary-400: #42A5F5;
+    --clr-primary-500: #2196F3;
+    --clr-primary-600: #1E88E5;
+    --clr-primary-700: #1976D2;
+    --clr-primary-800: #1565C0;
+    --clr-primary-900: #0D47A1;
 
-    --clr-A100: #FFFF8D;
+    /* Yellow */
+    --clr-A100: #FFD180;
     --clr-A200: #FFFF00;
     --clr-A400: #FFEA00;
     --clr-A700: #FFD600;
