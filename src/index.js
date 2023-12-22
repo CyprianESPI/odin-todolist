@@ -85,7 +85,7 @@ function refreshUi() {
 function refreshUiHome() {
     Utils.removeContent(home);
     const todoUi = new TodoUi(DB.data["UiTodo"]);
-    todoUi.CreateUiTemplate(true, "", home, DB, refreshUi);
+    todoUi.CreateUiTemplate(true, TodoUi.HOME_PROJECT, home, DB, refreshUi);
 
     const projectUi = new ProjectUi(DB.data["UiProject"]);
     projectUi.CreateUiInput(home, DB, refreshUi);

@@ -14,7 +14,7 @@ class TodoUi {
 
         // Display How many todos are present in a given project
         const title = document.createElement("div");
-        if (TodoUi.HOME_PROJECT === "Notes") {
+        if (projectTitle === "Notes") {
             title.innerHTML =
                 `<h2>
                 ${Object.keys(db.data["Notes"].todos).length} Notes
@@ -23,7 +23,7 @@ class TodoUi {
         else {
             title.innerHTML =
                 `<h2>
-                ${Object.keys(db.data["Projects"][TodoUi.HOME_PROJECT].todos).length} ${TodoUi.HOME_PROJECT}
+                ${Object.keys(db.data["Projects"][projectTitle].todos).length} ${projectTitle}
                 </h2>`;
         }
         if (homePage)
@@ -71,11 +71,7 @@ class TodoUi {
             opt.innerText = v.title;
             inputProject.appendChild(opt);
         });
-        if (homePage) {
-            inputProject.value = TodoUi.HOME_PROJECT;
-        } else {
-            inputProject.value = projectTitle;
-        }
+        inputProject.value = projectTitle;
         inputProject.addEventListener("input", (e) => {
             console.log("inputProject:", e.target.value);
             if (homePage) {
