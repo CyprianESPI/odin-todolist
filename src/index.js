@@ -112,6 +112,8 @@ function refreshUiDeadlines() {
     Object.entries(DB.data["Projects"]).forEach(([kProj, vProj]) => {
         Object.entries(vProj.todos).forEach(([kTodo, vTodo]) => {
             todos.push(vTodo);
+            // add project property to show in deadlines page
+            todos[todos.length - 1].project = kProj;
         });
     });
     console.log("refreshUiDeadlines:", todos);
@@ -126,7 +128,7 @@ function refreshUiDeadlines() {
     // Fill container
     todos.forEach((todo) => {
         const todoUi = new TodoUi(todo);
-        todoUi.CreateUiTemplate(false, "", deadlinesContainer, DB, refreshUi);
+        todoUi.CreateUiTemplate(false, todo.project, deadlinesContainer, DB, refreshUi);
     });
 }
 
