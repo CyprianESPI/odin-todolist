@@ -26,11 +26,22 @@ class ProjectUi {
             refreshUi();
         });
 
+        // Fill the header
+        const header = document.createElement("div");
+        header.innerHTML =
+            `<h2>
+            ${Object.keys(db.data["Projects"]).length} Projects
+            </h2>`;
+
         // Fill the container
         const container = document.createElement("div");
-        container.className = "card project-input";
-        container.appendChild(inputTitle);
-        container.appendChild(addBtn);
+        container.className = "card";
+        container.appendChild(header);
+        const main = document.createElement("div");
+        main.id = "project-input";
+        main.appendChild(inputTitle);
+        main.appendChild(addBtn);
+        container.appendChild(main);
         parent.appendChild(container);
     }
 
