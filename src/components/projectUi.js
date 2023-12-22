@@ -8,6 +8,13 @@ class ProjectUi {
 
     // Other methods or properties specific to Todo class
     CreateUiInput(parent, db, refreshUi) {
+        const inputTitle = document.createElement("input");
+        inputTitle.type = "text";
+        inputTitle.value = this.project.title;
+        inputTitle.addEventListener("input", (e) => {
+            this.project.title = e.target.value;
+        });
+
         const addBtn = document.createElement("button");
         addBtn.className = "material-symbols-outlined";
         addBtn.innerText = "add";
@@ -17,16 +24,13 @@ class ProjectUi {
             db.save();
             refreshUi();
         });
-        parent.appendChild(addBtn);
 
-        const inputTitle = document.createElement("input");
-        inputTitle.type = "text";
-        inputTitle.value = this.project.title;
-        inputTitle.addEventListener("input", (e) => {
-            this.project.title = e.target.value;
-        });
-        parent.appendChild(inputTitle);
-        parent.className = "addHeader";
+        // Fill the container
+        const container = document.createElement("div");
+        container.className = "projectInput";
+        container.appendChild(inputTitle);
+        container.appendChild(addBtn);
+        parent.appendChild(container);
     }
 
     CreateUiDisplay(parent, db, refreshUi) {

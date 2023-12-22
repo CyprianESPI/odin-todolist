@@ -102,6 +102,16 @@ textarea {
     align-items: center;
 }
 
+.projectInput {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 15px;
+    border-radius: var(--br);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .projectCard {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 15px;
