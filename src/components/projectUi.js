@@ -19,8 +19,9 @@ class ProjectUi {
         addBtn.className = "material-symbols-outlined";
         addBtn.innerText = "add";
         addBtn.addEventListener('click', (e) => {
-            db.data["Projects"][this.project.title] = this.project;
-            this.project = new Project(this.project.title, {});
+            const newProject = new Project(this.project.title, {});
+            db.data["Projects"][newProject.title] = newProject;
+            this.project = newProject;
             db.save();
             refreshUi();
         });
