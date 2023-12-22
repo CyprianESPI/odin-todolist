@@ -12,7 +12,8 @@ class TodoUi {
     // 2 options here, in home we display add to add item, and delete to clear content
     CreateUiTemplate(homePage, projectTitle, parent, db, refreshUi) {
         // Clear previous content
-        Utils.removeContent(parent);
+        if (homePage)
+            Utils.removeContent(parent);
 
         const container = document.createElement("div");
         container.className = "card todo";
