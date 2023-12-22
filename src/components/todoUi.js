@@ -19,7 +19,7 @@ class TodoUi {
 
         // Header
         const header = document.createElement("div");
-        header.className = "addHeader";
+        header.className = "todoHeader";
 
         if (homePage) {
             const addBtn = document.createElement("button");
@@ -48,14 +48,17 @@ class TodoUi {
         header.appendChild(inputTitle);
 
         // InputContent
-        const inputContent = document.createElement("textarea");
-        inputContent.innerText = this.todo.content;
-        inputContent.addEventListener("input", (e) => {
+        const inputContent = document.createElement("div");
+        const textArea = document.createElement("textarea");
+        textArea.innerText = this.todo.content;
+        textArea.addEventListener("input", (e) => {
             this.todo.content = e.target.value;
         });
+        inputContent.appendChild(textArea);
 
         // Footer
         const footer = document.createElement("div");
+        footer.className = "todoFooter";
 
         const inputDate = document.createElement("input");
         inputDate.type = "date";

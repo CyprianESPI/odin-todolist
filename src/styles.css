@@ -23,6 +23,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid red;
+    padding: 2px;
 }
 
 /*
@@ -60,6 +62,11 @@ button {
     border-radius: 50%;
 }
 
+textarea {
+    width: 95%;
+    margin: auto;
+}
+
 .tabButton {
     border-radius: var(--br);
     width: 75px;
@@ -82,17 +89,19 @@ button {
     margin-top: 20px;
 }
 
-.addHeader {
+.todoHeader,
+.todoFooter {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 2em;
 }
 
 .todoCard {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 15px;
+    border: 2px solid black;
     border-radius: var(--br);
-    padding: 10px;
 }
 
 .projectCard {
