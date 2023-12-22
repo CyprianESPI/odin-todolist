@@ -29,8 +29,10 @@ class ProjectUi {
         // Fill the header
         const header = document.createElement("div");
         header.innerHTML =
-            `<h2>
-            ${Object.keys(db.data["Projects"]).length} Projects
+            `<h2><span class="material-symbols-outlined add-button" >
+            dashboard
+            </span>
+            Projects: ${Object.keys(db.data["Projects"]).length}
             </h2>`;
 
         // Fill the container
