@@ -113,7 +113,7 @@ function refreshUiDeadlines() {
     });
     console.log("refreshUiDeadlines:", todos);
 
-    if (todo.length === 0)
+    if (todos.length === 0)
         return;
 
     // Sort array by date
