@@ -6,11 +6,12 @@ import ProjectUi from "./components/projectUi.js";
 import Db from "./components/db.js";
 import Tab from "./components/tab.js";
 import Utils from "./components/utils.js";
-import { compareAsc } from "date-fns";
+import { compareAsc, format } from "date-fns";
 
 // ======================== //
 // Global vars...
 // ======================== //
+const MS_IN_A_DAY = 24 * 60 * 60 * 1000;
 let DB = null;
 const content = document.getElementById("content");
 // Home tab
@@ -39,20 +40,20 @@ function loadDb() {
         DB = new Db({
             "Notes": new Project("Notes",
                 {
-                    "Swim": new Todo("Swim", "I should start swimming...", new Date(), "low"),
+                    "Swim": new Todo("Swim", "I should start swimming...", format(new Date(Date.now() + 30 * MS_IN_A_DAY), "yyyy-MM-dd"), "low"),
                 }),
-            "UiTodo": new Todo("TodoTitle...", "TodoContent...", new Date(), "low"),
+            "UiTodo": new Todo("TodoTitle...", "TodoContent...", format(new Date(), "yyyy-MM-dd"), "low"),
             "UiProject": new Project("ProjectTitle...", {}),
             "Projects": {
                 "Work": new Project("Work",
                     {
-                        "ProjectX": new Todo("ProjectX", "Finish this ASAP!!!!", new Date(), "high"),
+                        "ProjectX": new Todo("ProjectX", "Finish this ASAP!!!!", format(new Date(Date.now() + 3 * MS_IN_A_DAY), "yyyy-MM-dd"), "high"),
                     }),
                 "Sport": new Project("Sport", {}),
                 "Shopping": new Project("Shopping",
                     {
-                        "Costco": new Todo("Costco", "Eggs\nBacon\nBread", new Date(), "low"),
-                        "Amazon": new Todo("Amazon", "LOTR 1,2 & 3", new Date(), "medium"),
+                        "Costco": new Todo("Costco", "Eggs\nBacon\nBread", format(new Date(Date.now() + 5 * MS_IN_A_DAY), "yyyy-MM-dd"), "low"),
+                        "Amazon": new Todo("Amazon", "LOTR 1,2 & 3", format(new Date(Date.now() + 15 * MS_IN_A_DAY), "yyyy-MM-dd"), "medium"),
                     }),
             }
         });
