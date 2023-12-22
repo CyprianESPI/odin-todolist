@@ -85,14 +85,14 @@ function refreshUiHome() {
 function refreshUiProjects() {
     const projectsContainer = document.getElementById("projects-container");
     Utils.removeContent(projectsContainer);
-    // Display special Notes
-    const projectUi = new ProjectUi(DB.data["Notes"]);
-    projectUi.CreateUiDisplay(projectsContainer, DB, refreshUi);
     // Display regular Projects
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
         const projectUi = new ProjectUi(v);
         projectUi.CreateUiDisplay(projectsContainer, DB, refreshUi);
     });
+    // Display special Notes
+    const projectUi = new ProjectUi(DB.data["Notes"]);
+    projectUi.CreateUiDisplay(projectsContainer, DB, refreshUi);
 }
 
 
