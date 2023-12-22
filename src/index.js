@@ -45,10 +45,12 @@ function loadDb() {
         // These keys are important
         DB = new Db({
             "Notes": new Project("Notes", {}),
-            "UiTodo": new Todo("Title", "Content...", "", 0),
-            "UiProject": new Project("Title", {}),
+            "UiTodo": new Todo("TodoTitle...", "TodoContent...", new Date(), "low"),
+            "UiProject": new Project("ProjectTitle...", {}),
             "Projects": {
-                "New Project": new Project("New Project", {}),
+                "Work": new Project("Work", {}),
+                "Sport": new Project("Sport", {}),
+                "Shopping": new Project("Shopping", {}),
             }
         });
         console.log("Created new db:", DB);
