@@ -31,7 +31,8 @@ padding: 2px;
 */
 
 body {
-    display: block;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     text-align: center;
     height: 100vh;
 }
@@ -52,8 +53,8 @@ body {
 
 main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 button {
@@ -84,7 +85,8 @@ textarea {
 }
 
 .footer {
-    margin-top: 20px;
+    font-size: small;
+    padding: 5px;
 }
 
 .todoCard {
