@@ -12,11 +12,11 @@
     --clr-primary-800: #1565C0;
     --clr-primary-900: #0D47A1;
 
-    /* Yellow */
-    --clr-A100: #FFD180;
-    --clr-A200: #FFFF00;
-    --clr-A400: #FFEA00;
-    --clr-A700: #FFD600;
+    /* Red */
+    --clr-A100: #FF8A80;
+    --clr-A200: #FF5252;
+    --clr-A400: #FF1744;
+    --clr-A700: #D50000;
 
     --br: 15px;
 }
@@ -87,14 +87,30 @@ textarea {
     border-radius: 50%;
     width: 50px;
     aspect-ratio: 1;
-    background-color: var(--clr-primary-500);
-    color: white;
+    background-color: white;
+    color: var(--clr-primary-700);
+}
+
+button {
+    border: 0px;
+    box-shadow: 0 2px 2px #888888;
 }
 
 .btnActive {
     background-color: var(--clr-primary-700);
-    color: var(--clr-A400);
+    color: white;
 }
+
+.add-button {
+    background-color: var(--clr-primary-700);
+    color: white;
+}
+
+.delete-button {
+    background-color: var(--clr-A400);
+    color: white;
+}
+
 
 .header {
     background-color: var(--clr-primary-100);

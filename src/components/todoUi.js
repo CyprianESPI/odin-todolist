@@ -120,7 +120,7 @@ class TodoUi {
         // + button only applies to homePage
         if (homePage) {
             const addBtn = document.createElement("button");
-            addBtn.className = "material-symbols-outlined";
+            addBtn.className = "material-symbols-outlined add-button";
             addBtn.innerText = "add";
             addBtn.addEventListener('click', (e) => {
                 const newTodo = new Todo(this.todo.title, this.todo.content, this.todo.dueDate, this.todo.priority);
@@ -137,7 +137,7 @@ class TodoUi {
         }
         else {
             const deleteBtn = document.createElement("button");
-            deleteBtn.className = "material-symbols-outlined";
+            deleteBtn.className = "material-symbols-outlined delete-button";
             deleteBtn.innerText = "delete";
             deleteBtn.addEventListener('click', (e) => {
                 if (inputProject.value == "Notes") {

@@ -16,7 +16,7 @@ class ProjectUi {
         });
 
         const addBtn = document.createElement("button");
-        addBtn.className = "material-symbols-outlined";
+        addBtn.className = "material-symbols-outlined add-button";
         addBtn.innerText = "add";
         addBtn.addEventListener('click', (e) => {
             const newProject = new Project(this.project.title, {});
@@ -45,7 +45,7 @@ class ProjectUi {
         // Notes must never be deleted
         if (this.project.title !== "Notes") {
             const deleteBtn = document.createElement("button");
-            deleteBtn.className = "material-symbols-outlined";
+            deleteBtn.className = "material-symbols-outlined delete-button";
             deleteBtn.innerText = "delete";
             deleteBtn.addEventListener('click', (e) => {
                 delete db.data["Projects"][this.project.title];
