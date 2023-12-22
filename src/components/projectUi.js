@@ -49,7 +49,6 @@ class ProjectUi {
         const container = document.createElement("div");
         container.className = "card project-view";
         const header = document.createElement("div");
-        header.className = "project-view-card-header";
         const title = document.createElement("h2");
         title.innerText = this.project.title;
         header.appendChild(title);
@@ -69,14 +68,18 @@ class ProjectUi {
 
         container.appendChild(header);
 
+        const todosContainer = document.createElement("div");
+        todosContainer.className = "project-view-card-main";
+
         Object.entries(this.project.todos).forEach(([k, v]) => {
             console.log("CreateUiDisplay kvp:", k, v);
             const todoUi = new TodoUi(v);
-            const todosContainer = document.createElement("div");
-            container.appendChild(todosContainer);
-            todoUi.CreateUiTemplate(false, this.project.title, todosContainer, db, refreshUi);
+            const todoContainer = document.createElement("div");
+            todosContainer.appendChild(todoContainer);
+            todoUi.CreateUiTemplate(false, this.project.title, todoContainer, db, refreshUi);
         });
 
+        container.appendChild(todosContainer);
         parent.appendChild(container);
     }
 }
