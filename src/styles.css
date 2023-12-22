@@ -74,6 +74,7 @@ button {
 }
 
 textarea {
+    height: 100%;
     width: 100%;
     margin: auto;
 }
@@ -102,6 +103,8 @@ textarea {
 }
 
 .todoCard {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 15px;
     border: 2px solid black;
