@@ -25,6 +25,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid red;
+    padding: 2px;
 }
 
 /*
@@ -59,16 +61,6 @@ h2 {
     display: none;
 }
 
-#todo-title,
-#todo-content,
-#project-name {
-    justify-content: center;
-    margin-top: 20px;
-    width: 95%;
-    border-radius: var(--br);
-    padding: 5px;
-}
-
 main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
@@ -95,14 +87,16 @@ textarea {
     color: var(--clr-primary-700);
 }
 
-button {
-    border: 0px;
-    box-shadow: 0 2px 2px #888888;
-}
-
 .btnActive {
     background-color: var(--clr-primary-700);
     color: white;
+}
+
+
+/* buttons */
+button {
+    border: 0px;
+    box-shadow: 0 2px 2px #888888;
 }
 
 .add-button {
@@ -134,29 +128,15 @@ button {
     padding: 5px;
 }
 
-#project-input {
+.card>* {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.card.card.project-input>* {
     margin: 5px;
-}
-
-.card.todo>* {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
+    gap: 10px;
 }
 
 .card.todo {
     display: grid;
     grid-template-rows: auto 1fr auto;
-}
-
-.project-view-card-header {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
 }
