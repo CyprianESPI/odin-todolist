@@ -95,6 +95,14 @@ class TodoUi {
         inputDate.type = "date";
         inputDate.valueAsDate = new Date();
         footer.appendChild(inputDate);
+        inputDate.addEventListener("input", (e) => {
+            console.log("inputDate:", e.target.value);
+            this.todo.dueDate = e.target.value;
+            if (!homePage) {
+                db.save();
+                refreshUi();
+            }
+        });
 
         const inputPrio = document.createElement("select");
         Todo.priorities.forEach((option) => {
