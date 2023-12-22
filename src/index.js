@@ -83,6 +83,7 @@ function refreshUi() {
 }
 
 function refreshUiHome() {
+    Utils.removeContent(home);
     const todoUi = new TodoUi(DB.data["UiTodo"]);
     todoUi.CreateUiTemplate(true, "", home, DB, refreshUi);
 

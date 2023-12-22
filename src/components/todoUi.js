@@ -1,5 +1,4 @@
 import Todo from './todo.js';
-import Utils from './utils.js';
 
 class TodoUi {
     static HOME_PROJECT = "Notes";
@@ -8,13 +7,8 @@ class TodoUi {
         this.todo = todo;
     }
 
-    // This function clears any child from its parent
-    // 2 options here, in home we display add to add item, and delete to clear content
+    // homePage option selects the add/delete feature
     CreateUiTemplate(homePage, projectTitle, parent, db, refreshUi) {
-        // Clear previous content
-        if (homePage)
-            Utils.removeContent(parent);
-
         const container = document.createElement("div");
         container.className = "card todo";
 
