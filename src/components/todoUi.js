@@ -88,7 +88,7 @@ class TodoUi {
                 refreshUi();
             }
         });
-        footer.appendChild(inputProject);
+
 
         const inputDate = document.createElement("input");
         inputDate.type = "date";
@@ -148,6 +148,11 @@ class TodoUi {
             });
             footer.appendChild(deleteBtn);
         }
+
+        // Fill the header
+        header.appendChild(inputProject);
+        // Fill the inputContent
+        // Fill the footer
 
         // Fill the container
         container.appendChild(header);
