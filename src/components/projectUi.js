@@ -27,7 +27,7 @@ class ProjectUi {
 
         // Fill the container
         const container = document.createElement("div");
-        container.className = "projectInput";
+        container.className = "card project-input";
         container.appendChild(inputTitle);
         container.appendChild(addBtn);
         parent.appendChild(container);
@@ -35,9 +35,9 @@ class ProjectUi {
 
     CreateUiDisplay(parent, db, refreshUi) {
         const container = document.createElement("div");
-        container.className = "projectCard";
+        container.className = "card project-view";
         const header = document.createElement("div");
-        header.className = "project-card-header";
+        header.className = "project-view-card-header";
         const title = document.createElement("h2");
         title.innerText = this.project.title;
         header.appendChild(title);

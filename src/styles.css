@@ -104,40 +104,37 @@ textarea {
     padding: 5px;
 }
 
-.todoCard {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+/* Cards */
+.card {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 15px;
-    border: 2px solid black;
+    margin: 10px;
     border-radius: var(--br);
+    padding: 5px;
 }
 
-.todoCard>* {
+.card.project-input {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.card.card.project-input>* {
     margin: 5px;
 }
 
-.projectInput {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 15px;
-    border-radius: var(--br);
-    padding: 10px;
+.card.todo>* {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin: 5px;
 }
 
-.projectCard {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 15px;
-    border-radius: var(--br);
-    padding: 10px;
+.card.todo {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
-.project-card-header {
+.project-view-card-header {
     display: flex;
     justify-content: space-between;
+    margin: 5px;
 }
