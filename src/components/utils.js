@@ -4,6 +4,10 @@ class Utils {
             elem.firstChild.remove();
         }
     }
+
+    static isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
 }
 
 export default Utils;

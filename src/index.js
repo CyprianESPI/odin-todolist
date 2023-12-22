@@ -77,6 +77,7 @@ function createTabs() {
 function refreshUi() {
     refreshUiHome();
     refreshUiProjects();
+    refreshUiDeadlines();
 }
 
 function refreshUiHome() {
@@ -98,6 +99,32 @@ function refreshUiProjects() {
     // Display special Notes
     const projectUi = new ProjectUi(DB.data["Notes"]);
     projectUi.CreateUiDisplay(projectsContainer, DB, refreshUi);
+}
+
+function refreshUiDeadlines() {
+    const deadlinesContainer = deadlines;
+    Utils.removeContent(deadlinesContainer);
+    let todos = [];
+    // Get a flat array of Todos
+    Object.entries(DB.data["Projects"]).forEach(([kProj, vProj]) => {
+        Object.entries(vProj.todos).forEach(([kTodo, vTodo]) => {
+            todos.push(vTodo);
+        });
+    });
+    console.log("refreshUiDeadlines:", todos);
+
+    if (todo.length === 0)
+        return;
+
+    // Sort array by date
+    todos.sort((a, b) => { return new Date(b.dueDate) - new Date(a.dueDate) });
+    console.log("refreshUiDeadlines, sorted:", todos);
+
+    // Fill container
+    todos.forEach((todo) => {
+        const todoUi = new TodoUi(todo);
+        todoUi.CreateUiTemplate(false, "", deadlinesContainer, DB, refreshUi);
+    });
 }
 
 
