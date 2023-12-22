@@ -37,20 +37,30 @@ deadlines.innerHTML =
 // ======================== //
 function loadDb() {
     const json = localStorage.getItem(Db.KEY);
-    if (json) {
+    if (false) {
         DB = new Db(JSON.parse(json));
         console.log("Loaded db from localStorage:", DB);
     }
     else {
         // These keys are important
         DB = new Db({
-            "Notes": new Project("Notes", {}),
+            "Notes": new Project("Notes",
+                {
+                    "Swim": new Todo("Swim", "I should start swimming...", new Date(), "low"),
+                }),
             "UiTodo": new Todo("TodoTitle...", "TodoContent...", new Date(), "low"),
             "UiProject": new Project("ProjectTitle...", {}),
             "Projects": {
-                "Work": new Project("Work", {}),
+                "Work": new Project("Work",
+                    {
+                        "ProjectX": new Todo("ProjectX", "Finish this ASAP!!!!", new Date(), "high"),
+                    }),
                 "Sport": new Project("Sport", {}),
-                "Shopping": new Project("Shopping", {}),
+                "Shopping": new Project("Shopping",
+                    {
+                        "Costco": new Todo("Costco", "Eggs\nBacon\nBread", new Date(), "low"),
+                        "Amazon": new Todo("Amazon", "LOTR 1,2 & 3", new Date(), "medium"),
+                    }),
             }
         });
         console.log("Created new db:", DB);
