@@ -12,9 +12,25 @@ class TodoUi {
         const container = document.createElement("div");
         container.className = "card todo";
 
+        // Display How many todos are present in a given project
+        const title = document.createElement("div");
+        if (TodoUi.HOME_PROJECT === "Notes") {
+            title.innerHTML =
+                `<h2>
+                ${Object.keys(db.data["Notes"].todos).length} Notes
+                </h2>`;
+        }
+        else {
+            title.innerHTML =
+                `<h2>
+                ${Object.keys(db.data["Projects"][TodoUi.HOME_PROJECT].todos).length} ${TodoUi.HOME_PROJECT}
+                </h2>`;
+        }
+        if (homePage)
+            container.appendChild(title);
+
         // Header
         const header = document.createElement("div");
-        header.className = "todoHeader";
 
         const inputTitle = document.createElement("input");
         inputTitle.type = "text";
@@ -79,9 +95,9 @@ class TodoUi {
                 else {
                     delete db.data["Projects"][projectTitle].todos[this.todo.title];
                 }
-                db.save();
-                refreshUi();
             }
+            db.save();
+            refreshUi();
         });
 
 
