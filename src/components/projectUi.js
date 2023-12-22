@@ -10,7 +10,7 @@ class ProjectUi {
     CreateUiInput(parent, db, refreshUi) {
         const inputTitle = document.createElement("input");
         inputTitle.type = "text";
-        inputTitle.value = this.project.title;
+        inputTitle.placeholder = this.project.title;
         inputTitle.addEventListener("input", (e) => {
             this.project.title = e.target.value;
         });
