@@ -69,12 +69,6 @@ function createTabs() {
     Tabs[0].SetActive();
 }
 
-function loadUiProjectInput() {
-    const projectsInput = document.getElementById("projects-input");
-    const projectUi = new ProjectUi(DB.data["UiProject"]);
-    projectUi.CreateUiInput(projectsInput, DB, refreshUi);
-}
-
 function refreshUi() {
     refreshUiHome();
     refreshUiProjects();
@@ -83,6 +77,9 @@ function refreshUi() {
 function refreshUiHome() {
     const todoUi = new TodoUi(DB.data["UiTodo"]);
     todoUi.CreateUiTemplate(true, "", home, DB, refreshUi);
+
+    const projectUi = new ProjectUi(DB.data["UiProject"]);
+    projectUi.CreateUiInput(home, DB, refreshUi);
 }
 
 function refreshUiProjects() {
@@ -104,7 +101,6 @@ function refreshUiProjects() {
 function main() {
     loadDb();
     createTabs();
-    loadUiProjectInput();
     refreshUi();
 }
 
