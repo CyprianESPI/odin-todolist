@@ -135,6 +135,11 @@ button {
     gap: 10px;
 }
 
+/* Override normal card behavior to center todos */
+.project-view-card-main {
+    justify-content: space-evenly;
+}
+
 .card.todo {
     display: grid;
     grid-template-rows: auto 1fr auto;
