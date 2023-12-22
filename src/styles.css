@@ -71,6 +71,8 @@ main {
 
 button {
     border-radius: 50%;
+    aspect-ratio: 1;
+    width: 30px;
 }
 
 textarea {
@@ -132,4 +134,9 @@ textarea {
     margin: 15px;
     border-radius: var(--br);
     padding: 10px;
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
 }

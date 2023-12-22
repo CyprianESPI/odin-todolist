@@ -37,6 +37,7 @@ class ProjectUi {
         const container = document.createElement("div");
         container.className = "projectCard";
         const header = document.createElement("div");
+        header.className = "project-card-header";
         const title = document.createElement("h2");
         title.innerText = this.project.title;
         header.appendChild(title);
