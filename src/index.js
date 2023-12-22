@@ -6,6 +6,7 @@ import ProjectUi from "./components/projectUi.js";
 import Db from "./components/db.js";
 import Tab from "./components/tab.js";
 import Utils from "./components/utils.js";
+import { compareAsc } from "date-fns";
 
 // ======================== //
 // Global vars...
@@ -116,8 +117,8 @@ function refreshUiDeadlines() {
     if (todos.length === 0)
         return;
 
-    // Sort array by date
-    todos.sort((a, b) => { return new Date(b.dueDate) - new Date(a.dueDate) });
+    // Sort array by date - this modifies the array order itself
+    todos.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
     console.log("refreshUiDeadlines, sorted:", todos);
 
     // Fill container
