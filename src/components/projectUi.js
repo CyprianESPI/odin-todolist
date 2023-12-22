@@ -32,7 +32,7 @@ class ProjectUi {
             `<h2><span class="material-symbols-outlined add-button" >
             dashboard
             </span>
-            Projects: ${Object.keys(db.data["Projects"]).length}
+            ${Object.keys(db.data["Projects"]).length}
             </h2>`;
 
         // Fill the container

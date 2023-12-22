@@ -16,14 +16,30 @@ class TodoUi {
         const title = document.createElement("div");
         if (projectTitle === "Notes") {
             title.innerHTML =
-                `<h2>
-                ${Object.keys(db.data["Notes"].todos).length} Notes
+                `<h2><span class="material-symbols-outlined add-button" >
+                dashboard
+                </span>
+                Notes
+                </h2>
+                <h2>
+                <span class="material-symbols-outlined add-button" >
+                description
+                </span>
+                ${Object.keys(db.data["Notes"].todos).length}
                 </h2>`;
         }
         else {
             title.innerHTML =
-                `<h2>
-                ${Object.keys(db.data["Projects"][projectTitle].todos).length} ${projectTitle}
+                `<h2><span class="material-symbols-outlined add-button" >
+                dashboard
+                </span>
+                ${projectTitle}
+                </h2>
+                <h2>
+                <span class="material-symbols-outlined add-button" >
+                description
+                </span>
+                ${Object.keys(db.data["Projects"][projectTitle].todos).length}
                 </h2>`;
         }
         if (homePage)
