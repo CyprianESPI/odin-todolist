@@ -63,7 +63,7 @@ button {
 }
 
 textarea {
-    width: 95%;
+    width: 100%;
     margin: auto;
 }
 
@@ -89,19 +89,17 @@ textarea {
     margin-top: 20px;
 }
 
-.todoHeader,
-.todoFooter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2em;
-}
-
 .todoCard {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 15px;
     border: 2px solid black;
     border-radius: var(--br);
+}
+
+.todoCard>* {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .projectCard {
