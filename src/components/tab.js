@@ -8,7 +8,7 @@ class Tab {
     constructor(name, content) {
         this.name = name;
         this.content = content;
-        this.content.className += Tab.active;
+        this.content.className += " " + Tab.active;
         this.button = null;
     }
 

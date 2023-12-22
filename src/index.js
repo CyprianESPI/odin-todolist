@@ -14,6 +14,7 @@ let DB = null;
 const content = document.getElementById("content");
 // Home tab
 const home = document.createElement("div");
+home.className = "home-container";
 
 // Projects tab
 const projects = document.createElement("div");

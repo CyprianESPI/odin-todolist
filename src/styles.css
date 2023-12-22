@@ -37,11 +37,18 @@ body {
     height: 100vh;
 }
 
+.home-container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+}
+
 .tabContainer {
     display: flex;
     justify-content: space-around;
 }
 
+/* This rule must be applied after each page container (home/project/schedule) */
 .tabInactive {
     display: none;
 }
