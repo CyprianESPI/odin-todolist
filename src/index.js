@@ -18,26 +18,18 @@ home.className = "home-container";
 
 // Projects tab
 const projects = document.createElement("div");
-projects.innerHTML =
-    `<div id="projects-input">
-    </div>
-    <div id="projects-container">
-    </div>`;
+projects.className = "projects-container";
 
 // Deadlines tab
 const deadlines = document.createElement("div");
-deadlines.innerHTML =
-    `<span>Deadlines</span>
-    <div id="deadlines-container">
-    </div>`;
-
+deadlines.className = "deadlines-container";
 
 // ======================== //
 // Functions...
 // ======================== //
 function loadDb() {
     const json = localStorage.getItem(Db.KEY);
-    if (false) {
+    if (json) {
         DB = new Db(JSON.parse(json));
         console.log("Loaded db from localStorage:", DB);
     }
@@ -96,7 +88,7 @@ function refreshUiHome() {
 }
 
 function refreshUiProjects() {
-    const projectsContainer = document.getElementById("projects-container");
+    const projectsContainer = projects;
     Utils.removeContent(projectsContainer);
     // Display regular Projects
     Object.entries(DB.data["Projects"]).forEach(([k, v]) => {
